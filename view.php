@@ -19,6 +19,8 @@
         <th>Hobby</th>
         <th>Gender</th>
         <th>Address</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
 
@@ -42,6 +44,8 @@
         <td><?php echo $row['hobby'] ?></td>
         <td><?php echo $row['gender'] ?></td>
         <td><?php echo $row['address'] ?></td>
+        <td><a class="waves-effect waves-light btn">Edit</a></td>
+        <td><a class="waves-effect waves-light btn">Delete</a></td>
       </tr>
       <?php
       }
