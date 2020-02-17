@@ -13,31 +13,31 @@
     <form class="col s12" method="POST">
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate" name="fname">
+          <input id="first_name" type="text" class="validate" name="fname" required>
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" name="lname">
+          <input id="last_name" type="text" class="validate" name="lname" required>
           <label for="last_name">Last Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="email" type="email" class="validate" name="email">
+          <input id="email" type="email" class="validate" name="email" required>
           <label for="email">Email</label>
         </div>
         <div class="input-field col s6">
-          <input id="number" type="number" class="validate" name="number">
+          <input id="number" type="number" class="validate" name="number" required>
           <label for="number">Mobile Number</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="age" type="number" class="validate" name="age">
+          <input id="age" type="number" class="validate" name="age" required>
           <label for="age">Age</label>
         </div>
         <div class="input-field col s6">
-          <input id="hobby" type="text" class="validate" name="hobby">
+          <input id="hobby" type="text" class="validate" name="hobby" required>
           <label for="hobby">Hobby</label>
         </div>
       </div>
@@ -77,7 +77,7 @@
 
     // print $address;
 
-    $reg_user = "insert into user_details values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
+    $reg_user = "INSERT into user_details values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
 
     $insert = $con->query($reg_user);
 
