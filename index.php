@@ -1,7 +1,3 @@
-<?php
-  include './connection.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +10,7 @@
 
 <body>
   <div class="container">
-    <form class="col s12">
+    <form class="col s12" method="POST">
       <div class="row">
         <div class="input-field col s6">
           <input id="first_name" type="text" class="validate" name="fname">
@@ -68,5 +64,30 @@
 
 
 <?php
+  include './connection.php';
+  if (isset($_POST['submit'])) {
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $number = $_POST['number'];
+    $age = $_POST['age'];
+    $hobby = $_POST['hobby'];
+    $gender = $_POST['gender'];
+    $address = $_POST['address'];
 
+    // print $address;
+
+    $reg_user = "insert into user_details values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
+
+    $insert = $con->query($reg_user);
+
+    if ($insert) {
+      print 'pass';
+    } else {
+      print 'fail';
+    }
+
+  } else {
+    print 'name';
+  }
 ?>
