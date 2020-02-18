@@ -44,7 +44,7 @@
         <td><?php echo $row['hobby'] ?></td>
         <td><?php echo $row['gender'] ?></td>
         <td><?php echo $row['address'] ?></td>
-        <td><a class="waves-effect waves-light btn">Edit</a></td>
+        <td><a class="waves-effect waves-light btn" href="./edit.php?email=<?php echo $row['email']?>">Edit</a></td>
         <td><a class="waves-effect waves-light btn">Delete</a></td>
       </tr>
       <?php
