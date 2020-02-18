@@ -52,12 +52,13 @@
         </div>
       </div>
       <div class="center">
-      <input class="waves-effect waves-light btn" type="submit" value="submit" name="submit">
+        <input class="waves-effect waves-light btn" type="submit" value="submit" name="submit">
+        <a href="./view.php" class="waves-effect waves-light btn">View Submitted Forms</a>
       </div>
     </form>
   </div>
-      <!-- Compiled and minified JavaScript -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>
