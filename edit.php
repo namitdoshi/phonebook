@@ -81,7 +81,7 @@
           $lname = $_POST['lname'];
           // print "<br>";
           // print "$email";
-          // $email = $_POST['email'];
+          $email = $_POST['email'];
           $number = $_POST['number'];
           $age = $_POST['age'];
           $hobby = $_POST['hobby'];
@@ -90,7 +90,7 @@
       
           // print $address;
       
-          $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE id = '$id'";
+          $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', email='$email', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE id = '$id'";
       
           $insert = $con->query($update_user);
       
