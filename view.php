@@ -30,6 +30,12 @@
     include './connection.php';
     $read = "SELECT * FROM `user_details`";
     $result = $con->query($read);
+
+    $id = $_GET['id'];
+
+    $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
+    $res = $con->query($delete_query);
+    if ($res) { print 'pass1'; }
     // $result = mysqli_query($con, $read);
     if ($result -> num_rows > 0) {
       // print 'pass';
@@ -55,13 +61,6 @@
   else {
     print 'fail';
   }
-
-  $id = $_GET['id'];
-
-  $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
-  $res = $con->query($delete_query);
-  if ($res) { print 'pass1'; }
-
 ?>
     </tbody>
   </table>
