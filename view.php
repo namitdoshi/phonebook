@@ -45,7 +45,7 @@
         <td><?php echo $row['gender'] ?></td>
         <td><?php echo $row['address'] ?></td>
         <td><a class="waves-effect waves-light btn" href="./edit.php?email=<?php echo $row['email']?>">Edit</a></td>
-        <td><a class="waves-effect waves-light btn">Delete</a></td>
+        <td><a class="waves-effect waves-light btn" href="?email=<?php echo $row['email']; ?>" name="delete">Delete</a></td>
       </tr>
       <?php
       }
@@ -53,6 +53,13 @@
   else {
     print 'fail';
   }
+
+  $email = $_GET['email'];
+
+  $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`email` = '$email'";
+  $res = $con->query($delete_query);
+  if ($res) { print 'pass1'; }
+
 ?>
     </tbody>
   </table>
