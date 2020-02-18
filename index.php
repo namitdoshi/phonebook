@@ -78,7 +78,7 @@
 
     // print $address;
 
-    $reg_user = "INSERT into user_details values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
+    $reg_user = "INSERT into user_details (fname, lname, email, mobile, age, hobby, gender, address) values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
 
     $insert = $con->query($reg_user);
 
