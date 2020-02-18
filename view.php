@@ -27,6 +27,41 @@
         <?php
     include './connection.php';
     // print $_GET['id'];
+    // $searchData = '';
+    $flag = 0;
+
+    // if ($flag == 0) {
+    //   $read = "SELECT * FROM `user_details`";
+    //   $result = $con->query($read);
+    // }
+
+    if (isset($_POST['search'])) {
+      print 'asd';
+      $searchData = $_POST['search-box'];
+      $searchQuery = "SELECT * FROM user_details WHERE fname = '$searchData'";
+      $result = $con->query($searchQuery);
+      if ($result) {
+        print 'match';
+      } else { print 'not match'; }
+    }
+
+    else {
+      $read = "SELECT * FROM `user_details`";
+      $result = $con->query($read);
+    }
+
+    // if (isset($_POST['search'])) {
+      // $searchData = $_POST['search-box'];
+      // $searchQuery = "SELECT * FROM user_details WHERE fname = '$searchData'";
+      // $result = $con->query($searchQuery);
+      // $flag = 1;
+      // print 'qorj';
+      // if ($result) {
+      //   print 'match';
+      // } else { print 'not match'; }
+    // }
+
+
     if (isset($_GET['id'])) {
       $id = $_GET['id'];
 
@@ -35,8 +70,8 @@
       if ($res) { print 'pass1'; }
     }
 
-    $read = "SELECT * FROM `user_details`";
-    $result = $con->query($read);
+    // $read = "SELECT * FROM `user_details`";
+    // $result = $con->query($read);
     
     // $result = mysqli_query($con, $read);
     if ($result -> num_rows > 0) {
@@ -73,8 +108,8 @@
             <input id="search-box" type="text" class="validate" name="search-box" style="width: 20%">
           </div>
           <div class="input-field col-3">
-            <!-- <input type="submit" value="Search" class="waves-effect waves-light btn"> -->
-            <a href="" class="waves-effect waves-light btn">Search</a>
+            <input type="submit" value="Search" class="waves-effect waves-light btn" name="search">
+            <!-- <a href="" class="waves-effect waves-light btn" name="search">Search</a> -->
           </div>
         </div>
       </form>
