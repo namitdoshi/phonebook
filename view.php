@@ -56,9 +56,9 @@
     print 'fail';
   }
 
-  $email = $_GET['email'];
+  $id = $_GET['id'];
 
-  $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`email` = '$email'";
+  $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
   $res = $con->query($delete_query);
   if ($res) { print 'pass1'; }
 
