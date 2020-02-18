@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <form class="col s12" method="POST">
-    <?php 
+      <?php 
       include './connection.php';
       $email = $_GET['email'];
     //   print $email;
@@ -25,7 +25,8 @@
     ?>
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate" name="fname" value="<?php echo $row['fname']; ?>" required>
+          <input id="first_name" type="text" class="validate" name="fname" value="<?php echo $row['fname']; ?>"
+            required>
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
@@ -39,7 +40,8 @@
           <label for="email">Email</label>
         </div>
         <div class="input-field col s6">
-          <input id="number" type="number" class="validate" name="number" value="<?php echo $row['mobile']; ?>" required>
+          <input id="number" type="number" class="validate" name="number" value="<?php echo $row['mobile']; ?>"
+            required>
           <label for="number">Mobile Number</label>
         </div>
       </div>
@@ -55,11 +57,12 @@
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="gender" type="text" class="validate"  name="gender" value="<?php echo $row['gender']; ?>" required>
+          <input id="gender" type="text" class="validate" name="gender" value="<?php echo $row['gender']; ?>" required>
           <label for="gender">Gender</label>
         </div>
         <div class="input-field col s6">
-          <input id="address" type="text" class="validate" name="address" value="<?php echo $row['address']; ?>" required>
+          <input id="address" type="text" class="validate" name="address" value="<?php echo $row['address']; ?>"
+            required>
           <label for="address">Address</label>
         </div>
       </div>
@@ -69,6 +72,36 @@
       </div>
       <?php
           }
+        }
+
+        include './connection.php';
+        // print $email;
+        if (isset($_POST['submit'])) {
+          $fname = $_POST['fname'];
+          $lname = $_POST['lname'];
+          // print "<br>";
+          // print "$email";
+          // $email = $_POST['email'];
+          $number = $_POST['number'];
+          $age = $_POST['age'];
+          $hobby = $_POST['hobby'];
+          $gender = $_POST['gender'];
+          $address = $_POST['address'];
+      
+          // print $address;
+      
+          $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE email = '$email'";
+      
+          $insert = $con->query($update_user);
+      
+          if ($insert) {
+            print 'pass';
+          } else {
+            print 'fail';
+          }
+      
+        } else {
+          print 'name';
         }
       ?>
     </form>
