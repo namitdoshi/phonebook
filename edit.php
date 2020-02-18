@@ -36,7 +36,7 @@
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="email" type="email" class="validate" name="email" value="<?php echo $row['email']; ?>" disabled>
+          <input id="email" type="email" class="validate" name="email" value="<?php echo $row['email']; ?>" required>
           <label for="email">Email</label>
         </div>
         <div class="input-field col s6">
