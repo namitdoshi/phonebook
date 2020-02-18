@@ -55,11 +55,11 @@
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="gender" type="text" class="validate"  name="gender" value="<?php echo $row['gender']; ?>">
+          <input id="gender" type="text" class="validate"  name="gender" value="<?php echo $row['gender']; ?>" required>
           <label for="gender">Gender</label>
         </div>
         <div class="input-field col s6">
-          <input id="address" type="text" class="validate" name="address" value="<?php echo $row['address']; ?>">
+          <input id="address" type="text" class="validate" name="address" value="<?php echo $row['address']; ?>" required>
           <label for="address">Address</label>
         </div>
       </div>
