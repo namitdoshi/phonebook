@@ -11,6 +11,7 @@
 <table>
     <thead>
       <tr>
+        <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
@@ -36,6 +37,7 @@
  
   ?>
       <tr>
+        <td><?php echo $row['id'] ?></td>
         <td><?php echo $row['fname'] ?></td>
         <td><?php echo $row['lname'] ?></td>
         <td><?php echo $row['email'] ?></td>
@@ -44,8 +46,8 @@
         <td><?php echo $row['hobby'] ?></td>
         <td><?php echo $row['gender'] ?></td>
         <td><?php echo $row['address'] ?></td>
-        <td><a class="waves-effect waves-light btn" href="./edit.php?email=<?php echo $row['email']?>">Edit</a></td>
-        <td><a class="waves-effect waves-light btn" href="?email=<?php echo $row['email']; ?>" name="delete">Delete</a></td>
+        <td><a class="waves-effect waves-light btn" href="./edit.php?id=<?php echo $row['id']?>">Edit</a></td>
+        <td><a class="waves-effect waves-light btn" href="?id=<?php echo $row['id']; ?>" name="delete">Delete</a></td>
       </tr>
       <?php
       }

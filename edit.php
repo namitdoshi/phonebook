@@ -13,9 +13,9 @@
     <form class="col s12" method="POST">
       <?php 
       include './connection.php';
-      $email = $_GET['email'];
+      $id = $_GET['id'];
     //   print $email;
-      $read = "SELECT * FROM user_details WHERE email='$email'";
+      $read = "SELECT * FROM user_details WHERE id='$id'";
       $result = $con->query($read);
     //   if($result) { print 'papapaaasaad'; }
       // $result = mysqli_query($con, $read);
@@ -90,7 +90,7 @@
       
           // print $address;
       
-          $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE email = '$email'";
+          $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE id = '$id'";
       
           $insert = $con->query($update_user);
       
