@@ -60,7 +60,7 @@
     include './connection.php';
     // print $_GET['id'];
     // $searchData = '';
-    $flag = 0;
+    // $flag = 0;
 
     // if ($flag == 0) {
     //   $read = "SELECT * FROM `user_details`";
@@ -136,7 +136,7 @@
           <td>
             <p>
               <label>
-                <input type="checkbox" class="filled-in" />
+                <input type="checkbox" class="filled-in" name="contacts[]" value="<?php echo $row['id']?>"/>
                 <span></span>
               </label>
             </p>
