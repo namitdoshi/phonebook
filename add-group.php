@@ -11,17 +11,29 @@
 
 <?php 
   include './connection.php';  
-  if (isset($_POST['submit'])) {
+  // print $_POST['group-name'];
+  // $_POST['group-name'] = '';
+  // print $_POST['group-name'];
+  // print '<br>';
+  if (isset($_POST['submit']) and isset($_POST['group-name'])) {
     print 'phase 1';
     $groupName = $_POST['group-name'];
     $insertIntoGroup = "INSERT INTO group_details (groupName) VALUES ('$groupName')";
     $result = $con -> query($insertIntoGroup);
     if ($result) {
       print 'pass';
+      unset($_POST['group-name']);
+      unset($groupName);
+      print '<br>';
+      // print $groupName;
     } else {
       print 'fail';
     }
   }
+
+  $showGroupsQuery = "SELECT * FROM group_details";
+  $showGroups = $con -> query($showGroupsQuery);
+
 ?>
 
 <body>
@@ -39,6 +51,31 @@
         </div>
       </div>
     </form>
+
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>Group Id</th>
+            <th>Group Name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <?php 
+            if ($showGroups -> num_rows > 0) {
+              while($row=$showGroups->fetch_assoc()) {
+          ?>
+          <tr>
+            <td><?php echo $row['groupId']; ?></td>
+            <td><?php echo $row['groupName']; ?></td>
+          </tr>
+          <?php 
+              }
+            }
+          ?>
+      </table>
+    </div>
   </div>
 
   <!-- Compiled and minified JavaScript -->

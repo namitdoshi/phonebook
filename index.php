@@ -14,7 +14,7 @@
   <div class="row">
     <div class="center">
       <a href="./add-contact.php" class="waves-effect waves-light btn">Add Contact</a>
-      <a href="" class="waves-effect waves-light btn">Add Group</a>
+      <a href="./add-group.php" class="waves-effect waves-light btn">Add Group</a>
     </div>
   </div>
   </div>
