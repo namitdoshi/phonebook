@@ -111,10 +111,24 @@
       </tbody>
     </table>
     <div>
-      <form method="POST" class="col s12 center">
-        <div class="row center">
-          <div class="input-field col-3">
-            <input id="search-box" type="text" class="validate" name="search-box" style="width: 20%">
+      <form method="POST" class="col s12">
+        <div class="row">
+          <div class="input-field col s4">
+            <input id="search-box" type="text" class="validate" name="search-box">
+          </div>
+          <div class="input-field col s4">
+            <select>
+              <option value="" disabled selected>Choose option </option>
+              <option value="1" name="fname">First Name</option>
+              <option value="2" name="lanme">Last Name</option>
+              <option value="3" name="email">Email</option>
+              <option value="4" name="number">Mobile</option>
+              <option value="5" name="age">Age</option>
+              <option value="6" name="hobby">Hobby</option>
+              <option value="7" name="gender">Gender</option>
+              <option value="8" name="address">Address</option>
+            </select>
+            <label>Search By</label>
           </div>
           <div class="input-field col-3">
             <input type="submit" value="Search" class="waves-effect waves-light btn" name="search">
@@ -125,10 +139,8 @@
     </div>
   </div>
   <!-- Compiled and minified JavaScript -->
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./main.js"></script>
 </body>
