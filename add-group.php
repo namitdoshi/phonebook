@@ -71,7 +71,7 @@
           <tr>
             <td><?php echo $row['groupId']; ?></td>
             <td><?php echo $row['groupName']; ?></td>
-            <td><a href="?id=<?php echo $row['groupId']; ?>" class="waves-effect waves-light btn">+</a></td>
+            <td><a href="./add-to-group.php?groupId=<?php echo $row['groupId']; ?>" class="waves-effect waves-light btn">+</a></td>
             <td><a href="" class="waves-effects waves-light btn">View</a></td>
           </tr>
           <?php 
