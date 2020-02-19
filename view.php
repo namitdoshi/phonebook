@@ -10,7 +10,7 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>First Name <a href="" class="waves-effect waves-light btn" name="sort">Sort</a></th>
+          <th>First Name <a href="?sortByfname=true" class="waves-effect waves-light btn" name="sort">Sort</a></th>
           <th>Last Name</th>
           <th>Email</th>
           <th>Mobile Number</th>
@@ -45,6 +45,15 @@
       } else { print 'not match'; }
     }
 
+    elseif (isset($_GET['sortByfname'])) {
+      // print 'beepbop';
+      $sortFname = "SELECT * FROM user_details ORDER BY fname";
+      $result = $con->query($sortFname);
+    //   if ($result) {
+    //     print 'match';
+    //   } else { print 'not match'; }
+    }
+    
     else {
       $read = "SELECT * FROM `user_details`";
       $result = $con->query($read);
