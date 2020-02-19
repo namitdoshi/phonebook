@@ -43,7 +43,13 @@
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="gender" type="text" class="validate" name="gender">
+        <select name="gender">
+              <option value="" disabled selected>Select </option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          <!-- <input id="gender" type="text" class="validate" name="gender"> -->
           <label for="gender">Gender</label>
         </div>
         <div class="input-field col s6">
@@ -58,7 +64,10 @@
     </form>
   </div>
   <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./main.js"></script>
 </body>
 
 </html>
