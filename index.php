@@ -43,12 +43,12 @@
       </div>
       <div class="row">
         <div class="input-field col s6">
-        <select name="gender">
-              <option value="" disabled selected>Select </option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
+          <select name="gender">
+            <option value="" disabled selected>Select </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
           <!-- <input id="gender" type="text" class="validate" name="gender"> -->
           <label for="gender">Gender</label>
         </div>
