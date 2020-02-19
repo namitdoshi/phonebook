@@ -9,6 +9,21 @@
 
 </head>
 
+<?php 
+  include './connection.php';  
+  if (isset($_POST['submit'])) {
+    print 'phase 1';
+    $groupName = $_POST['group-name'];
+    $insertIntoGroup = "INSERT INTO group_details (groupName) VALUES ('$groupName')";
+    $result = $con -> query($insertIntoGroup);
+    if ($result) {
+      print 'pass';
+    } else {
+      print 'fail';
+    }
+  }
+?>
+
 <body>
   <div class="container">
     <form class="col s12" method="POST">
