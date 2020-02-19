@@ -15,6 +15,38 @@
       include './connection.php';
       $id = $_GET['id'];
     //   print $email;
+
+    
+    include './connection.php';
+    // print $email;
+    if (isset($_POST['submit'])) {
+      $fname = $_POST['fname'];
+      $lname = $_POST['lname'];
+      // print "<br>";
+      // print "$email";
+      $email = $_POST['email'];
+      $number = $_POST['number'];
+      $age = $_POST['age'];
+      $hobby = $_POST['hobby'];
+      $gender = $_POST['gender'];
+      $address = $_POST['address'];
+  
+      // print $address;
+  
+      $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', email='$email', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE id = '$id'";
+  
+      $insert = $con->query($update_user);
+  
+      if ($insert) {
+        print 'pass';
+      } else {
+        print 'fail';
+      }
+  
+    } else {
+      print 'name';
+    }
+
       $read = "SELECT * FROM user_details WHERE id='$id'";
       $result = $con->query($read);
     //   if($result) { print 'papapaaasaad'; }
@@ -72,36 +104,6 @@
       </div>
       <?php
           }
-        }
-
-        include './connection.php';
-        // print $email;
-        if (isset($_POST['submit'])) {
-          $fname = $_POST['fname'];
-          $lname = $_POST['lname'];
-          // print "<br>";
-          // print "$email";
-          $email = $_POST['email'];
-          $number = $_POST['number'];
-          $age = $_POST['age'];
-          $hobby = $_POST['hobby'];
-          $gender = $_POST['gender'];
-          $address = $_POST['address'];
-      
-          // print $address;
-      
-          $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', email='$email', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE id = '$id'";
-      
-          $insert = $con->query($update_user);
-      
-          if ($insert) {
-            print 'pass';
-          } else {
-            print 'fail';
-          }
-      
-        } else {
-          print 'name';
         }
       ?>
     </form>
