@@ -35,10 +35,12 @@
     //   $result = $con->query($read);
     // }
 
-    if (isset($_POST['search'])) {
+    if (isset($_POST['search']) and isset($_POST['searchBy'])) {
       print 'asd';
+      $searchBy = $_POST['searchBy'];
+      print $searchBy;
       $searchData = $_POST['search-box'];
-      $searchQuery = "SELECT * FROM user_details WHERE fname = '$searchData'";
+      $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
       $result = $con->query($searchQuery);
       if ($result) {
         print 'match';
@@ -117,16 +119,16 @@
             <input id="search-box" type="text" class="validate" name="search-box">
           </div>
           <div class="input-field col s4">
-            <select>
+            <select name="searchBy">
               <option value="" disabled selected>Choose option </option>
-              <option value="1" name="fname">First Name</option>
-              <option value="2" name="lanme">Last Name</option>
-              <option value="3" name="email">Email</option>
-              <option value="4" name="number">Mobile</option>
-              <option value="5" name="age">Age</option>
-              <option value="6" name="hobby">Hobby</option>
-              <option value="7" name="gender">Gender</option>
-              <option value="8" name="address">Address</option>
+              <option value="fname">First Name</option>
+              <option value="lname">Last Name</option>
+              <option value="email">Email</option>
+              <option value="mobile">Mobile</option>
+              <option value="age">Age</option>
+              <option value="hobby">Hobby</option>
+              <option value="gender">Gender</option>
+              <option value="address">Address</option>
             </select>
             <label>Search By</label>
           </div>
