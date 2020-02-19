@@ -58,6 +58,7 @@
           <tr>
             <th>Group Id</th>
             <th>Group Name</th>
+            <th>Add Contact(s)</th>
           </tr>
         </thead>
 
@@ -69,6 +70,7 @@
           <tr>
             <td><?php echo $row['groupId']; ?></td>
             <td><?php echo $row['groupName']; ?></td>
+            <td><a href="?id=<?php echo $row['groupId']; ?>" class="waves-effect waves-light btn">+</a></td>
           </tr>
           <?php 
               }
