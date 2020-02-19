@@ -154,7 +154,7 @@
     <div class="row center">
       <br><br>
       <form method=POST>
-        <input type="submit" value="Save Changes" class="waves-effect waves-light btn">
+        <input type="submit" value="Save Changes" class="waves-effect waves-light btn" name="add-contact">
       </form>
     </div>
   </div>
