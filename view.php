@@ -112,7 +112,7 @@
 ?>
       </tbody>
     </table>
-    <div>
+    <div class="container">
       <form method="POST" class="col s12">
         <div class="row">
           <div class="input-field col s4">
