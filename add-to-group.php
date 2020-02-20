@@ -40,14 +40,14 @@
     <!-- Groups to Add -->
 
     <div class="row">
-
-      <div class="input-field col s4">
-        <select multiple>
-          <option value="" disabled selected>Choose your option</option>
-          <!-- <option value="2">Option 2</option>
+      <form method=POST>
+        <div class="input-field col s4">
+          <select multiple name="contacts[]">
+            <option value="" disabled selected>Choose option</option>
+            <!-- <option value="2">Option 2</option>
           <option value="3">Option 3</option> -->
 
-          <?php
+  <?php
     include './connection.php';
     // print $_GET['id'];
     // $searchData = '';
@@ -88,14 +88,12 @@
       print 'kay';
       // print $_POST['contacts'];
       // $checkBox = implode(',', $_POST['contacts']);
-      $checkBox = $_POST['contacts'];
-      $contact = "";
-      $checkBox1 = '';
-      foreach ($checkBox1 as $checkBox) {
-        $contact = $checkBox1;
-        print $checkBox;
-        $groupId = $_GET['groupId'];
-        $addContactQuery = "INSERT INTO group_contact_list (groupId, id) VALUES ('$groupId', '" . $checkBox . "')";
+      // $selectvalue = $_POST['contacts'];
+      $groupId = $_GET['groupId'];
+      // print $con;
+      foreach ($_POST['contacts'] as $contact) {
+  
+        $addContactQuery = "INSERT INTO `group_contacts_list` (`groupId`, `id`) VALUES ('$groupId', '$contact')";
         $insertContacts = $con -> query($addContactQuery);
   
         if ($insertContacts) {
@@ -129,13 +127,13 @@
     // }
 
 
-    if (isset($_GET['id'])) {
-      $id = $_GET['id'];
+    // if (isset($_GET['id'])) {
+    //   $id = $_GET['id'];
 
-      $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
-      $res = $con->query($delete_query);
-      if ($res) { print 'pass1'; }
-    }
+    //   $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
+    //   $res = $con->query($delete_query);
+    //   if ($res) { print 'pass1'; }
+    // }
 
     // $read = "SELECT * FROM `user_details`";
     // $result = $con->query($read);
@@ -146,8 +144,8 @@
       while($row=$result->fetch_assoc()) {
  
   ?>
-          <option value="<?php echo $id; ?>"><?php echo $row['fname'] . ' ' . $row['lname']; ?></option>
-          <?php
+            <option value="<?php echo $row['id']; ?>"><?php echo $row['fname'] . ' ' . $row['lname']; ?></option>
+            <?php
       }
     }
   else {
@@ -155,13 +153,11 @@
   }
 ?>
 
-        </select>
-        <label>Materialize Multiple Select</label>
-      </div>
-    </div>
-    <div class="row center">
-      <br><br>
-      <form method=POST>
+          </select>
+          <label>Add Contacts</label>
+        </div>
+        <!-- </div>
+    <div class="row center"> -->
         <input type="submit" value="Save Changes" class="waves-effect waves-light btn" name="add-contact">
       </form>
     </div>
