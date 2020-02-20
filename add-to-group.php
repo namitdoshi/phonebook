@@ -22,11 +22,11 @@
             <option value="fname">First Name</option>
             <option value="lname">Last Name</option>
             <option value="email">Email</option>
-            <option value="mobile">Mobile</option>
+            <!-- <option value="mobile">Mobile</option>
             <option value="age">Age</option>
             <option value="hobby">Hobby</option>
             <option value="gender">Gender</option>
-            <option value="address">Address</option>
+            <option value="address">Address</option> -->
           </select>
           <label>Search By</label>
         </div>
