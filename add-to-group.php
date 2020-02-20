@@ -90,7 +90,7 @@
       // $checkBox = implode(',', $_POST['contacts']);
       // $selectvalue = $_POST['contacts'];
       $groupId = $_GET['groupId'];
-      // print $con;
+      print 'sasa';
       foreach ($_POST['contacts'] as $contact) {
   
         $addContactQuery = "INSERT INTO `group_contacts_list` (`groupId`, `id`) VALUES ('$groupId', '$contact')";
