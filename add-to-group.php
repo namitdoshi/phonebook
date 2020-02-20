@@ -38,6 +38,8 @@
     </form>
   </div>
 
+  <!-- Groups to Add -->
+
   <div class="container-fluid">
     <table>
       <thead>
@@ -93,6 +95,39 @@
       $result = $con->query($read);
     }
 
+    if (isset($_POST['add-contact']) and isset($_GET['groupId'])) {
+      print 'kay';
+      // print $_POST['contacts'];
+      // $checkBox = implode(',', $_POST['contacts']);
+      $checkBox = $_POST['contacts'];
+      $contact = "";
+      $checkBox1 = '';
+      foreach ($checkBox1 as $checkBox) {
+        $contact = $checkBox1;
+        print $checkBox;
+        $groupId = $_GET['groupId'];
+        $addContactQuery = "INSERT INTO group_contact_list (groupId, id) VALUES ('$groupId', '" . $checkBox . "')";
+        $insertContacts = $con -> query($addContactQuery);
+  
+        if ($insertContacts) {
+          print 'yay';
+        } else {
+          print 'nay';
+        }
+      }
+      // print $checkBox;
+      // $groupId = $_GET['groupId'];
+      // $addContactQuery = "INSERT INTO group_contact_list (groupId, id) VALUES ('$groupId', '" . $checkBox . "')";
+      // $insertContacts = $con -> query($addContactQuery);
+
+      // if ($insertContacts) {
+      //   print 'yay';
+      // } else {
+      //   print 'nay';
+      // }
+
+    }
+
     // if (isset($_POST['search'])) {
       // $searchData = $_POST['search-box'];
       // $searchQuery = "SELECT * FROM user_details WHERE fname = '$searchData'";
@@ -136,7 +171,7 @@
           <td>
             <p>
               <label>
-                <input type="checkbox" class="filled-in" name="contacts[]" value="<?php echo $row['id']?>"/>
+                <input type="checkbox" id="contacts" class="filled-in" name="contacts[ ]" value="<?php echo $row['id']?>"/>
                 <span></span>
               </label>
             </p>
