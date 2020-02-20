@@ -36,12 +36,12 @@
         </div>
       </div>
     </form>
-  </div>
+    <!-- </div> -->
 
-  <!-- Groups to Add -->
+    <!-- Groups to Add -->
 
-  <div class="container-fluid">
-    <table>
+    <!-- <div class="container-fluid"> -->
+    <!-- <table>
       <thead>
         <tr>
           <th>Id</th>
@@ -57,8 +57,17 @@
         </tr>
       </thead>
 
-      <tbody>
-        <?php
+      <tbody> -->
+
+    <div class="row">
+
+      <div class="input-field col s4">
+        <select multiple>
+          <option value="" disabled selected>Choose your option</option>
+          <!-- <option value="2">Option 2</option>
+          <option value="3">Option 3</option> -->
+
+          <?php
     include './connection.php';
     // print $_GET['id'];
     // $searchData = '';
@@ -157,7 +166,8 @@
       while($row=$result->fetch_assoc()) {
  
   ?>
-        <tr>
+          <option value="1">Option 1</option>
+          <!-- <tr>
           <td><?php echo $row['id'] ?></td>
           <td><?php echo $row['fname'] ?></td>
           <td><?php echo $row['lname'] ?></td>
@@ -166,9 +176,9 @@
           <td><?php echo $row['age'] ?></td>
           <td><?php echo $row['hobby'] ?></td>
           <td><?php echo $row['gender'] ?></td>
-          <td><?php echo $row['address'] ?></td>
+          <td><?php echo $row['address'] ?></td> -->
           <!-- <td><a class="waves-effect waves-light btn" href="./edit.php?id=<?php echo $row['id']?>">Edit</a></td> -->
-          <td>
+          <!-- <td>
             <p>
               <label>
                 <input type="checkbox" id="contacts" class="filled-in" name="contacts[ ]" value="<?php echo $row['id']?>"/>
@@ -176,16 +186,21 @@
               </label>
             </p>
           </td>
-        </tr>
-        <?php
+        </tr> -->
+          <?php
       }
     }
   else {
     print 'fail';
   }
 ?>
-      </tbody>
-    </table>
+
+        </select>
+        <label>Materialize Multiple Select</label>
+      </div>
+    </div>
+    <!-- </tbody>
+    </table> -->
     <div class="row center">
       <br><br>
       <form method=POST>
