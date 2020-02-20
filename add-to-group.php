@@ -36,28 +36,8 @@
         </div>
       </div>
     </form>
-    <!-- </div> -->
 
     <!-- Groups to Add -->
-
-    <!-- <div class="container-fluid"> -->
-    <!-- <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>First Name <a href="?sortByfname=true" class="waves-effect waves-light btn" name="sort">Sort</a></th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Mobile Number</th>
-          <th>Age</th>
-          <th>Hobby</th>
-          <th>Gender</th>
-          <th>Address</th>
-          <th>Add</th>
-        </tr>
-      </thead>
-
-      <tbody> -->
 
     <div class="row">
 
@@ -167,26 +147,6 @@
  
   ?>
           <option value="1">Option 1</option>
-          <!-- <tr>
-          <td><?php echo $row['id'] ?></td>
-          <td><?php echo $row['fname'] ?></td>
-          <td><?php echo $row['lname'] ?></td>
-          <td><?php echo $row['email'] ?></td>
-          <td><?php echo $row['mobile'] ?></td>
-          <td><?php echo $row['age'] ?></td>
-          <td><?php echo $row['hobby'] ?></td>
-          <td><?php echo $row['gender'] ?></td>
-          <td><?php echo $row['address'] ?></td> -->
-          <!-- <td><a class="waves-effect waves-light btn" href="./edit.php?id=<?php echo $row['id']?>">Edit</a></td> -->
-          <!-- <td>
-            <p>
-              <label>
-                <input type="checkbox" id="contacts" class="filled-in" name="contacts[ ]" value="<?php echo $row['id']?>"/>
-                <span></span>
-              </label>
-            </p>
-          </td>
-        </tr> -->
           <?php
       }
     }
@@ -199,8 +159,6 @@
         <label>Materialize Multiple Select</label>
       </div>
     </div>
-    <!-- </tbody>
-    </table> -->
     <div class="row center">
       <br><br>
       <form method=POST>
