@@ -146,7 +146,7 @@
       while($row=$result->fetch_assoc()) {
  
   ?>
-          <option value="1">Option 1</option>
+          <option value="<?php echo $id; ?>"><?php echo $row['fname'] . ' ' . $row['lname']; ?></option>
           <?php
       }
     }
