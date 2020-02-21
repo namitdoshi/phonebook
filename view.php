@@ -8,14 +8,15 @@
   <div class="container-fluid">
     <div class="row center">
       <div style="width: 30%; margin: auto;">
-        <form action="#">
+        <form method="POST">
           <div class="file-field input-field">
             <div class="btn">
               <span>Import</span>
               <input type="file" name="file">
             </div>
             <div class="file-path-wrapper">
-              <input class="file-path validate" type="text">
+              <input class="file-path validate" type="text" required>
+              <input type="submit" value="Submit" name="submit-file">
             </div>
           </div>
         </form>
