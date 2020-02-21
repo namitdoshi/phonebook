@@ -97,9 +97,9 @@
         $insertContacts = $con -> query($addContactQuery);
   
         if ($insertContacts) {
-          print 'yay';
+          header('location: ./add-to-group.php');
         } else {
-          print 'nay';
+          print 'Please try again!';
         }
       }
       // print $checkBox;
