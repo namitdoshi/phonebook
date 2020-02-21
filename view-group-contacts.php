@@ -8,6 +8,11 @@
 <head>
   <title>View Saved Contacts</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script>
+    function deleteContact (contactId) {
+      console.log(contactId)
+    }
+  </script>
 </head>
 
 <body>
@@ -45,7 +50,7 @@
         <td><?php echo $row['hobby']; ?></td>
         <td><?php echo $row['gender']; ?></td>
         <td><?php echo $row['address']; ?></td>
-        <td></td>
+        <td><a href="#" class="waves-effect waves-light btn" onClick="deleteContact(<?php echo $row['id']; ?>)">Delete</a></td>
 
       </tr>
       <?php    
