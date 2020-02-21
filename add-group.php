@@ -18,16 +18,22 @@
   if (isset($_POST['submit']) and isset($_POST['group-name'])) {
     print 'phase 1';
     $groupName = $_POST['group-name'];
-    $insertIntoGroup = "INSERT INTO group_details (groupName) VALUES ('$groupName')";
-    $result = $con -> query($insertIntoGroup);
-    if ($result) {
-      print 'pass';
-      unset($_POST['group-name']);
-      unset($groupName);
-      print '<br>';
-      // print $groupName;
+    $checkGroupQuery = "SELECT * FROM group_details WHERE groupName = '$groupName'";
+    $checkGroupExists = $con -> query($checkGroupQuery);
+    if ($checkGroupExists -> num_rows > 0) {
+      echo 'the group name already exists please choose another!';
     } else {
-      print 'fail';
+        $insertIntoGroup = "INSERT INTO group_details (groupName) VALUES ('$groupName')";
+        $result = $con -> query($insertIntoGroup);
+        if ($result) {
+          print 'Group created successfully!';
+          unset($_POST['group-name']);
+          unset($groupName);
+          print '<br>';
+          // print $groupName;
+        } else {
+          print 'fail';
+        }
     }
   }
 
