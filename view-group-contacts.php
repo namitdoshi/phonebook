@@ -4,6 +4,17 @@
   // $viewContactsQuery = "SELECT * FROM group_contacts_list WHERE groupId = '$groupID' RIGHT JOIN user_details ON group_contacts_list.id = user_details.id" ;
   $viewContactsQuery = "SELECT * FROM `group_contacts_list` LEFT JOIN user_details ON user_details.id = group_contacts_list.id WHERE group_contacts_list.groupId = '$groupID'";
   $viewContacts = $con -> query($viewContactsQuery);
+  if (isset($_GET['q'])) {
+    print 'namit';
+    $cId = $_GET['q'];
+    $deleteContactQuery = "DELETE FROM `group_contacts_list` WHERE id = '$cId'";
+    $deleteContact = $con -> query($deleteContactQuery);
+    if ($deleteContact) {
+      print 'saa';
+    } else {
+      print 'fail';
+    }
+  }
 ?>
 <head>
   <title>View Saved Contacts</title>
@@ -11,6 +22,13 @@
   <script>
     function deleteContact (contactId) {
       console.log(contactId)
+      if (window.XMLHttpRequest) {
+        console.log('namit')
+        xmlhttp = new XMLHttpRequest()
+        xmlhttp.open("GET","?q="+contactId,true)
+        xmlhttp.send();
+        location.reload();
+      }
     }
   </script>
 </head>
