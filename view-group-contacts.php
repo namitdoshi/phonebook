@@ -11,6 +11,7 @@
     $deleteContact = $con -> query($deleteContactQuery);
     if ($deleteContact) {
       print 'saa';
+      header('location: ./view-group-contacts.php');
     } else {
       print 'fail';
     }
@@ -27,7 +28,7 @@
         xmlhttp = new XMLHttpRequest()
         xmlhttp.open("GET","?q="+contactId,true)
         xmlhttp.send();
-        location.reload();
+        // location.reload();
       }
     }
   </script>
