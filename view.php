@@ -8,16 +8,18 @@
   <div class="container-fluid">
     <div class="row center">
       <div style="width: 30%; margin: auto;">
-        <form method="POST">
-          <div class="file-field input-field">
+        <form method="POST" class="col s12">
+          <div class="file-field input-field col s9">
             <div class="btn">
               <span>Import</span>
               <input type="file" name="file">
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text" required>
-              <input type="submit" value="Submit" name="submit-file">
             </div>
+          </div>
+          <div class="col s3">
+            <input type="submit" value="Submit" name="submit-file" class="input-field btn">
           </div>
         </form>
       </div>
@@ -107,7 +109,6 @@
  
   ?>
         <tr>
-          <td></td>
           <td><?php echo $row['id'] ?></td>
           <td><?php echo $row['fname'] ?></td>
           <td><?php echo $row['lname'] ?></td>
