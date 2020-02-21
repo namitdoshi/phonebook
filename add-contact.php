@@ -93,6 +93,7 @@
 
     if ($insert) {
       print 'pass';
+      header('location: ./add-contact.php');
     } else {
       print 'fail';
     }
