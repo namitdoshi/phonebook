@@ -8,11 +8,11 @@
   <div class="container-fluid">
     <div class="row center">
       <div style="width: 30%; margin: auto;">
-        <form method="POST" class="col s12">
+        <form method="POST" class="col s12" enctype="multipart/form-data">
           <div class="file-field input-field col s9">
             <div class="btn">
               <span>Import</span>
-              <input type="file" name="file">
+              <input type="file" name="file" required>
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text" required>
@@ -97,6 +97,33 @@
       $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
       $res = $con->query($delete_query);
       if ($res) { print 'pass1'; }
+    }
+
+    if (isset($_POST['submit-file'])) {
+      // if(isset($_POST['file'])) {
+      //   echo $_POST['file'];
+      // }
+      // $fileName = $_POST['file'];
+      // $csv = array_map('str_getcsv', file($fileName));
+      // print $csv;
+      // $file = fopen($fileName, "r");
+      // while (($getData = fgetcsv($file, 10, ",")) !== FALSE) { }
+
+      if ($_FILES['file']['name']) {
+        $filename = explode('.', $_FILES['file']['name']);
+        if ($filename[1] == 'csv') {
+          $file = fopen($_FILES['file']['tmp_name'], "r");
+          while ($data = fgetcsv($file)) {
+            $importQuery = "INSERT INTO user_details (fname, lname, email, mobile, age, hobby, gender, address) VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$data[7]')";
+            $import = $con -> query($importQuery);
+          }
+          if ($import) { 
+            echo 'data imported successflly!';
+          }
+        } else {
+          echo 'Please provide a csv file as input!';
+        }
+      }
     }
 
     // $read = "SELECT * FROM `user_details`";
