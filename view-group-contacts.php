@@ -16,6 +16,20 @@
       print 'fail';
     }
   }
+
+  // export contacts
+  if (isset($_POST['export'])) {
+    $filename = $groupID . ".csv";
+    // print $filename;
+    $fp = fopen('php://output', 'w');\
+    header('Content-type: application/csv');
+    header('Content-Disposition: attachment; filename='.$filename);
+    while ($row = $viewContacts -> fetch_assoc()) {
+      fputcsv($fp, $row);
+    }
+    exit;    
+  }
+
 ?>
 
 <head>
