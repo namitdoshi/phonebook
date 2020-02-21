@@ -6,6 +6,21 @@
 <body>
 
   <div class="container-fluid">
+    <div class="row center">
+      <div style="width: 30%; margin: auto;">
+        <form action="#">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Import</span>
+              <input type="file" name="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
     <table>
       <thead>
         <tr>
@@ -91,6 +106,7 @@
  
   ?>
         <tr>
+          <td></td>
           <td><?php echo $row['id'] ?></td>
           <td><?php echo $row['fname'] ?></td>
           <td><?php echo $row['lname'] ?></td>
