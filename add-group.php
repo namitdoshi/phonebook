@@ -27,10 +27,11 @@
         $result = $con -> query($insertIntoGroup);
         if ($result) {
           print 'Group created successfully!';
-          unset($_POST['group-name']);
-          unset($groupName);
+          // unset($_POST['group-name']);
+          // unset($groupName);
           print '<br>';
           // print $groupName;
+          header('location: ./add-group.php');
         } else {
           print 'fail';
         }
