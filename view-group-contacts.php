@@ -17,16 +17,17 @@
     }
   }
 ?>
+
 <head>
   <title>View Saved Contacts</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script>
-    function deleteContact (contactId) {
+    function deleteContact(contactId) {
       console.log(contactId)
       if (window.XMLHttpRequest) {
         console.log('namit')
         xmlhttp = new XMLHttpRequest()
-        xmlhttp.open("GET","?q="+contactId,true)
+        xmlhttp.open("GET", "?q=" + contactId, true)
         xmlhttp.send();
         // location.reload();
       }
@@ -36,6 +37,9 @@
 
 <body>
   <table>
+    <form method=POST>
+      <input type="submit" value="Export" name="export" class="input-field btn">
+    </form>
     <thead>
       <tr>
         <th>Contact id</th>
@@ -69,7 +73,8 @@
         <td><?php echo $row['hobby']; ?></td>
         <td><?php echo $row['gender']; ?></td>
         <td><?php echo $row['address']; ?></td>
-        <td><a href="#" class="waves-effect waves-light btn" onClick="deleteContact(<?php echo $row['id']; ?>)">Delete</a></td>
+        <td><a href="#" class="waves-effect waves-light btn"
+            onClick="deleteContact(<?php echo $row['id']; ?>)">Delete</a></td>
 
       </tr>
       <?php    
