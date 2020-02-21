@@ -38,7 +38,11 @@
       $insert = $con->query($update_user);
   
       if ($insert) {
-        print 'pass';
+        // print 'pass';
+        // echo "<script>";
+        // echo "alert('details updated!');";
+        // echo "</script>";
+        header('location: ./view.php');
       } else {
         print 'fail';
       }
