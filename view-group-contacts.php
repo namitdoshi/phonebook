@@ -1,6 +1,6 @@
 <?php 
     $title = 'Add Contacts';
-    include ('./header.php');
+    require_once ('./header.php');
 ?>
 
 <?php 
@@ -24,6 +24,7 @@
 
   // export contacts
   if (isset($_POST['export'])) {
+    ob_clean();
     $filename = $groupID . ".csv";
     // print $filename;
     $fp = fopen('php://output', 'w');\
