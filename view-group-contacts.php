@@ -1,4 +1,9 @@
 <?php 
+    $title = 'Add Contacts';
+    include ('./header.php');
+?>
+
+<?php 
   include './connection.php';
   $groupID = $_GET['groupId'];
   // $viewContactsQuery = "SELECT * FROM group_contacts_list WHERE groupId = '$groupID' RIGHT JOIN user_details ON group_contacts_list.id = user_details.id" ;
@@ -32,24 +37,13 @@
 
 ?>
 
-<head>
-  <title>View Saved Contacts</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <script>
-    function deleteContact(contactId) {
-      console.log(contactId)
-      if (window.XMLHttpRequest) {
-        console.log('namit')
-        xmlhttp = new XMLHttpRequest()
-        xmlhttp.open("GET", "?q=" + contactId, true)
-        xmlhttp.send();
-        // location.reload();
-      }
-    }
-  </script>
-</head>
+<!-- <head> -->
+  <!-- <title>View Saved Contacts</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+  
+<!-- </head> -->
 
-<body>
+<!-- <body> -->
   <table>
     <form method=POST>
       <input type="submit" value="Export" name="export" class="input-field btn">
@@ -104,6 +98,18 @@
     </tbody>
   </table>
 
+  <script>
+    function deleteContact(contactId) {
+      console.log(contactId)
+      if (window.XMLHttpRequest) {
+        console.log('namit')
+        xmlhttp = new XMLHttpRequest()
+        xmlhttp.open("GET", "?q=" + contactId, true)
+        xmlhttp.send();
+        // location.reload();
+      }
+    }
+  </script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
