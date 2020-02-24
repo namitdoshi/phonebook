@@ -110,15 +110,26 @@
       // while (($getData = fgetcsv($file, 10, ",")) !== FALSE) { }
 
       if ($_FILES['file']['name']) {
+        $import = false;
         $filename = explode('.', $_FILES['file']['name']);
         if ($filename[1] == 'csv') {
           $file = fopen($_FILES['file']['tmp_name'], "r");
           while ($data = fgetcsv($file)) {
-            $importQuery = "INSERT INTO user_details (fname, lname, email, mobile, age, hobby, gender, address) VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$data[7]')";
-            $import = $con -> query($importQuery);
+            $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$data[2]'";
+            $checkEmail = $con -> query($checkEmailQuery);
+
+            if ($checkEmail -> num_rows > 0) {
+              continue;
+            } else {
+              $importQuery = "INSERT INTO user_details (fname, lname, email, mobile, age, hobby, gender, address) VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$data[7]')";
+              $import = $con -> query($importQuery);
+            }
           }
           if ($import) { 
-            echo 'data imported successflly!';
+            echo 'data imported successfully!';
+            header('location: ./view.php');
+          } else {
+            print "something's not right, maybe the data already exists!";
           }
         } else {
           echo 'Please provide a csv file as input!';
@@ -178,7 +189,7 @@
             <label>Search By</label>
           </div>
           <div class="input-field col-3">
-            <input type="submit" value="Search" class="waves-effect waves-light btn" name="search">
+            <input type="submit" value="Search" class="input-btn input-field btn" name="search">
             <!-- <a href="" class="waves-effect waves-light btn" name="search">Search</a> -->
           </div>
         </div>
