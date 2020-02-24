@@ -80,7 +80,9 @@
     }
     
     else {
-      $read = "SELECT * FROM `user_details`";
+      $gId = $_GET['groupId'];
+      // $read = "SELECT * FROM `user_details`";
+      $read = "SELECT * FROM user_details WHERE id NOT IN (SELECT id from group_contacts_list WHERE groupId = '$gId')";
       $result = $con->query($read);
     }
 
