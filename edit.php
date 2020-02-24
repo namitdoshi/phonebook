@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,7 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
-<body>
+<body> -->
+
+<?php 
+    $title = 'Edit Contacts';
+    include ('./header.php');
+?>
   <div class="container">
     <form class="col s12" method="POST">
       <?php 
