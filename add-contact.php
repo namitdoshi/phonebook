@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registeration Page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-</head>
+</head> -->
 
-<body>
+<!-- <body> -->
+
+<?php 
+    $title = 'Add Contacts';
+    include ('./header.php');
+?>
+
   <div class="container">
     <form class="col s12" method="POST">
       <div class="row">
