@@ -87,7 +87,7 @@
     else {
       $gId = $_GET['groupId'];
       // $read = "SELECT * FROM `user_details`";
-      $read = "SELECT * FROM user_details WHERE id NOT IN (SELECT id from group_contacts_list WHERE groupId = '$gId')";
+      $read = "SELECT * FROM user_details WHERE id NOT IN (SELECT contactid from group_contacts_list WHERE groupId = '$gId')";
       $result = $con->query($read);
     }
 
@@ -100,7 +100,7 @@
       print 'sasa';
       foreach ($_POST['contacts'] as $contact) {
   
-        $addContactQuery = "INSERT INTO `group_contacts_list` (`groupId`, `id`) VALUES ('$groupId', '$contact')";
+        $addContactQuery = "INSERT INTO `group_contacts_list` (`groupId`, `contactidid`) VALUES ('$groupId', '$contact')";
         $insertContacts = $con -> query($addContactQuery);
   
         if ($insertContacts) {

@@ -7,12 +7,12 @@
   include './connection.php';
   $groupID = $_GET['groupId'];
   // $viewContactsQuery = "SELECT * FROM group_contacts_list WHERE groupId = '$groupID' RIGHT JOIN user_details ON group_contacts_list.id = user_details.id" ;
-  $viewContactsQuery = "SELECT * FROM `group_contacts_list` LEFT JOIN user_details ON user_details.id = group_contacts_list.id WHERE group_contacts_list.groupId = '$groupID'";
+  $viewContactsQuery = "SELECT * FROM `group_contacts_list` LEFT JOIN user_details ON user_details.id = group_contacts_list.contactid WHERE group_contacts_list.groupId = '$groupID'";
   $viewContacts = $con -> query($viewContactsQuery);
   if (isset($_GET['q'])) {
     print 'namit';
     $cId = $_GET['q'];
-    $deleteContactQuery = "DELETE FROM `group_contacts_list` WHERE id = '$cId'";
+    $deleteContactQuery = "DELETE FROM `group_contacts_list` WHERE contactid = '$cId'";
     $deleteContact = $con -> query($deleteContactQuery);
     if ($deleteContact) {
       print 'saa';
@@ -82,7 +82,7 @@
         <td><?php echo $row['gender']; ?></td>
         <td><?php echo $row['address']; ?></td>
         <td><a href="#" class="waves-effect waves-light btn"
-            onClick="deleteContact(<?php echo $row['id']; ?>)">Delete</a></td>
+            onClick="deleteContact(<?php echo $row['contactid']; ?>)">Delete</a></td>
 
       </tr>
       <?php    
