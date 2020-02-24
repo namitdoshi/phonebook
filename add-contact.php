@@ -87,7 +87,7 @@
 
     // print $address;
 
-    $reg_user = "INSERT into user_details (fname, lname, email, mobile, age, hobby, gender, address) values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
+    $reg_user = "INSERT into user_details (fname, lname, email, mobile, age, hobby, gender, address) values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' ) WHERE NOT EXISTS (SELECT email FROM user_details WHERE EMAIL = '$email')";
 
     $insert = $con->query($reg_user);
 
@@ -96,6 +96,8 @@
       header('location: ./add-contact.php');
     } else {
       print 'fail';
+      print '<br>';
+      print 'email already exixsts, please use another email and try again';
     }
 
   } else {
