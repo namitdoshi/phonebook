@@ -94,7 +94,11 @@
       <?php    
     }
   } else {
-    echo 'No Contacts were found in your Group!';
+    // echo 'No Contacts were found in your Group!';
+    echo '<script type="text/javascript">'; 
+    echo 'alert("You don not have any contacts in your group, please add some to view");'; 
+    echo 'window.location.href = "./add-group.php";';
+    echo '</script>';
   }
 ?>
     </tbody>
