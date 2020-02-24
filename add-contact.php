@@ -87,17 +87,25 @@
 
     // print $address;
 
-    $reg_user = "INSERT into user_details (fname, lname, email, mobile, age, hobby, gender, address) values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' ) WHERE NOT EXISTS (SELECT email FROM user_details WHERE EMAIL = '$email')";
+    $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$email'";
+    $checkEmail = $con -> query($checkEmailQuery);
 
-    $insert = $con->query($reg_user);
-
-    if ($insert) {
-      print 'pass';
-      header('location: ./add-contact.php');
-    } else {
-      print 'fail';
-      print '<br>';
+    if ($checkEmail -> num_rows > 0) {
       print 'email already exixsts, please use another email and try again';
+    } else {
+      $reg_user = "INSERT into user_details (fname, lname, email, mobile, age, hobby, gender, address) values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
+
+      $insert = $con->query($reg_user);
+
+      if ($insert) {
+        // echo '<script type="text/javascript">'; 
+        // echo 'alert("Contact added successfully");'; 
+        // echo 'window.location.href = "./add-group.php";';
+        // echo '</script>';
+        header('location: ./add-contact.php');
+      } else {
+        print 'fail';
+      }
     }
 
   } else {
