@@ -81,11 +81,11 @@
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="password" type="text" class="validate" name="password" required>
+          <input id="password" type="password" class="validate" name="password" required>
           <label for="password">Password</label>
         </div>
         <div class="input-field col s6">
-          <input id="repassword" type="text" class="validate" name="repassword" required>
+          <input id="repassword" password="text" class="validate" name="repassword" required>
           <label for="repassword">Re enter password</label>
         </div>
       </div>
