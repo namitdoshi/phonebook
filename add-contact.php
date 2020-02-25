@@ -10,7 +10,9 @@
 
 <!-- <body> -->
 
-<?php 
+<?php
+  session_start();
+  if (isset($_SESSION['id'])) {
     $title = 'Add Contacts';
     include ('./header.php');
 ?>
@@ -117,4 +119,7 @@
   } else {
     print 'name';
   }
+} else {
+  header('location: ./please-login.php');
+}
 ?>
