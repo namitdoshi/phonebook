@@ -1,9 +1,13 @@
-<head>
-  <title>View Details</title>
+<!-- <head>
+  <title>View Contacts</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
-<body>
+<body> -->
+
+<?php 
+  include './header.php';
+?>
 
   <div class="container-fluid">
     <div class="row center">
