@@ -20,6 +20,11 @@
       }
       if ($pass === $password) {
         print 'welcome' . $fname;
+        session_start();
+        $_SESSION['email'] = $email;
+        $_SESSION['name'] = $fname . " " . $lname;
+        print $_SESSION['name'];
+        header('./home.php');
       } else {
         print '<br>' . 'incorrect password';
       }
