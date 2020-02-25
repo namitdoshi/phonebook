@@ -1,36 +1,42 @@
 <?php
-  include './connection.php';
-  if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
-    // $loginQuery = "SELECT fname, lname, email, mobile FROM registeration WHERE email = '$email' AND password = '$password'";
-    $loginQuery = "SELECT * FROM registeration WHERE email = '$email'";
-    $login = $con -> query($loginQuery);
-    if ($login) {
-      if ($login -> num_rows > 0) {
-        $row = $login -> fetch_assoc();
-          $fname = $row['fname'];
-          $lname = $row['lname'];
-          $email = $row['email'];
-          $mobile = $row['mobile'];
-          $pass = $row['password'];
-        
-        // print $pass . "<br>";
-        // print md5($password);
-      }
-      if ($pass === $password) {
-        print 'welcome' . $fname;
-        session_start();
-        $_SESSION['email'] = $email;
-        $_SESSION['name'] = $fname . " " . $lname;
-        print $_SESSION['name'];
-        header('location: ./user-home.php');
+  
+  session_start();
+  if ($_SESSION['email']) {
+    header('location: ./user-home.php');
+  } else {
+    include './connection.php';
+    if (isset($_POST['login'])) {
+      $email = $_POST['email'];
+      $password = md5($_POST['password']);
+      // $loginQuery = "SELECT fname, lname, email, mobile FROM registeration WHERE email = '$email' AND password = '$password'";
+      $loginQuery = "SELECT * FROM registeration WHERE email = '$email'";
+      $login = $con -> query($loginQuery);
+      if ($login) {
+        if ($login -> num_rows > 0) {
+          $row = $login -> fetch_assoc();
+            $fname = $row['fname'];
+            $lname = $row['lname'];
+            $email = $row['email'];
+            $mobile = $row['mobile'];
+            $pass = $row['password'];
+          
+          // print $pass . "<br>";
+          // print md5($password);
+        }
+        if ($pass === $password) {
+          print 'welcome' . $fname;
+          session_start();
+          $_SESSION['email'] = $email;
+          $_SESSION['name'] = $fname . " " . $lname;
+          print $_SESSION['name'];
+          header('location: ./user-home.php');
+        } else {
+          print '<br>' . 'incorrect password';
+        }
       } else {
-        print '<br>' . 'incorrect password';
+        print 'incorrect email';
       }
-    } else {
-      print 'incorrect email';
-    }
+    } 
   }
 ?>
 
