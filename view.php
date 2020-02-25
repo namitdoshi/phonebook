@@ -42,109 +42,112 @@
       </thead>
 
       <tbody>
-        <?php
-    include './connection.php';
-    // print $_GET['id'];
-    // $searchData = '';
-    $flag = 0;
+  <?php
+    session_start();
+    if (isset($_SESSION['id'])) {
+        
+      include './connection.php';
+      // print $_GET['id'];
+      // $searchData = '';
+      $flag = 0;
 
-    // if ($flag == 0) {
-    //   $read = "SELECT * FROM `user_details`";
-    //   $result = $con->query($read);
-    // }
-
-    if (isset($_POST['search']) and isset($_POST['searchBy'])) {
-      print 'asd';
-      $searchBy = $_POST['searchBy'];
-      print $searchBy;
-      $searchData = $_POST['search-box'];
-      $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
-      $result = $con->query($searchQuery);
-      if ($result) {
-        print 'match';
-      } else { print 'not match'; }
-    }
-
-    elseif (isset($_GET['sortByfname'])) {
-      // print 'beepbop';
-      $sortFname = "SELECT * FROM user_details ORDER BY fname";
-      $result = $con->query($sortFname);
-    //   if ($result) {
-    //     print 'match';
-    //   } else { print 'not match'; }
-    }
-    
-    else {
-      $read = "SELECT * FROM `user_details`";
-      $result = $con->query($read);
-    }
-
-    // if (isset($_POST['search'])) {
-      // $searchData = $_POST['search-box'];
-      // $searchQuery = "SELECT * FROM user_details WHERE fname = '$searchData'";
-      // $result = $con->query($searchQuery);
-      // $flag = 1;
-      // print 'qorj';
-      // if ($result) {
-      //   print 'match';
-      // } else { print 'not match'; }
-    // }
-
-
-    if (isset($_GET['id'])) {
-      $id = $_GET['id'];
-
-      $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
-      $res = $con->query($delete_query);
-      if ($res) { print 'pass1'; }
-    }
-
-    if (isset($_POST['submit-file'])) {
-      // if(isset($_POST['file'])) {
-      //   echo $_POST['file'];
+      // if ($flag == 0) {
+      //   $read = "SELECT * FROM `user_details`";
+      //   $result = $con->query($read);
       // }
-      // $fileName = $_POST['file'];
-      // $csv = array_map('str_getcsv', file($fileName));
-      // print $csv;
-      // $file = fopen($fileName, "r");
-      // while (($getData = fgetcsv($file, 10, ",")) !== FALSE) { }
 
-      if ($_FILES['file']['name']) {
-        $import = false;
-        $filename = explode('.', $_FILES['file']['name']);
-        if ($filename[1] == 'csv') {
-          $file = fopen($_FILES['file']['tmp_name'], "r");
-          while ($data = fgetcsv($file)) {
-            $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$data[2]'";
-            $checkEmail = $con -> query($checkEmailQuery);
+      if (isset($_POST['search']) and isset($_POST['searchBy'])) {
+        print 'asd';
+        $searchBy = $_POST['searchBy'];
+        print $searchBy;
+        $searchData = $_POST['search-box'];
+        $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
+        $result = $con->query($searchQuery);
+        if ($result) {
+          print 'match';
+        } else { print 'not match'; }
+      }
 
-            if ($checkEmail -> num_rows > 0) {
-              continue;
-            } else {
-              $importQuery = "INSERT INTO user_details (fname, lname, email, mobile, age, hobby, gender, address) VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$data[7]')";
-              $import = $con -> query($importQuery);
+      elseif (isset($_GET['sortByfname'])) {
+        // print 'beepbop';
+        $sortFname = "SELECT * FROM user_details ORDER BY fname";
+        $result = $con->query($sortFname);
+      //   if ($result) {
+      //     print 'match';
+      //   } else { print 'not match'; }
+      }
+      
+      else {
+        $read = "SELECT * FROM `user_details`";
+        $result = $con->query($read);
+      }
+
+      // if (isset($_POST['search'])) {
+        // $searchData = $_POST['search-box'];
+        // $searchQuery = "SELECT * FROM user_details WHERE fname = '$searchData'";
+        // $result = $con->query($searchQuery);
+        // $flag = 1;
+        // print 'qorj';
+        // if ($result) {
+        //   print 'match';
+        // } else { print 'not match'; }
+      // }
+
+
+      if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+
+        $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
+        $res = $con->query($delete_query);
+        if ($res) { print 'pass1'; }
+      }
+
+      if (isset($_POST['submit-file'])) {
+        // if(isset($_POST['file'])) {
+        //   echo $_POST['file'];
+        // }
+        // $fileName = $_POST['file'];
+        // $csv = array_map('str_getcsv', file($fileName));
+        // print $csv;
+        // $file = fopen($fileName, "r");
+        // while (($getData = fgetcsv($file, 10, ",")) !== FALSE) { }
+
+        if ($_FILES['file']['name']) {
+          $import = false;
+          $filename = explode('.', $_FILES['file']['name']);
+          if ($filename[1] == 'csv') {
+            $file = fopen($_FILES['file']['tmp_name'], "r");
+            while ($data = fgetcsv($file)) {
+              $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$data[2]'";
+              $checkEmail = $con -> query($checkEmailQuery);
+
+              if ($checkEmail -> num_rows > 0) {
+                continue;
+              } else {
+                $importQuery = "INSERT INTO user_details (fname, lname, email, mobile, age, hobby, gender, address) VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$data[7]')";
+                $import = $con -> query($importQuery);
+              }
             }
-          }
-          if ($import) { 
-            echo 'data imported successfully!';
-            header('location: ./view.php');
+            if ($import) { 
+              echo 'data imported successfully!';
+              header('location: ./view.php');
+            } else {
+              print "something's not right, maybe the data already exists!";
+            }
           } else {
-            print "something's not right, maybe the data already exists!";
+            echo 'Please provide a csv file as input!';
           }
-        } else {
-          echo 'Please provide a csv file as input!';
         }
       }
-    }
 
-    // $read = "SELECT * FROM `user_details`";
-    // $result = $con->query($read);
-    
-    // $result = mysqli_query($con, $read);
-    if ($result -> num_rows > 0) {
-      // print 'pass';
-      while($row=$result->fetch_assoc()) {
- 
+      // $read = "SELECT * FROM `user_details`";
+      // $result = $con->query($read);
+      
+      // $result = mysqli_query($con, $read);
+      if ($result -> num_rows > 0) {
+        // print 'pass';
+        while($row=$result->fetch_assoc()) {
+  
   ?>
         <tr>
           <td><?php echo $row['id'] ?></td>
@@ -162,8 +165,11 @@
         <?php
       }
     }
-  else {
-    print 'fail';
+    else {
+      print 'fail';
+    }
+  } else {
+    header('location: ./login.php');
   }
 ?>
       </tbody>
