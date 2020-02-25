@@ -8,13 +8,13 @@
     $login = $con -> query($loginQuery);
     if ($login) {
       if ($login -> num_rows > 0) {
-        while ($row = $login -> fetch_assoc()) {
+        $row = $login -> fetch_assoc();
           $fname = $row['fname'];
           $lname = $row['lname'];
           $email = $row['email'];
           $mobile = $row['mobile'];
           $pass = $row['password'];
-        }
+        
         // print $pass . "<br>";
         // print md5($password);
       }
@@ -24,7 +24,7 @@
         $_SESSION['email'] = $email;
         $_SESSION['name'] = $fname . " " . $lname;
         print $_SESSION['name'];
-        header('./home.php');
+        header('location: ./home.php');
       } else {
         print '<br>' . 'incorrect password';
       }

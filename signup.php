@@ -13,7 +13,7 @@
     if ($password == $repassword) {
       print $err;
       if (strlen($password) < 8 || strlen($password) > 16) {
-        $err = 'password must be of lenght between 8-12';
+        $err = 'password must be of lenght between 8-16';
       } elseif (!preg_match ("/[0-9]/", $password)) {
         $err = 'password must contain at least one number';
       } elseif (!preg_match("/[a-z]/", $password)) {
