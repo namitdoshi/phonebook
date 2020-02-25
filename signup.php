@@ -61,31 +61,31 @@
     <form class="s 12" method="POST">
       <div class="row">
         <div class="input-field col s6">
-          <input id="fname" type="text" class="validate" name="fname">
+          <input id="fname" type="text" class="validate" name="fname" required>
           <label for="fname">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="lname" type="text" class="validate" name="lname">
+          <input id="lname" type="text" class="validate" name="lname" required>
           <label for="lname">Last Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="email" type="text" class="validate" name="email">
+          <input id="email" type="text" class="validate" name="email" required>
           <label for="email">Email</label>
         </div>
         <div class="input-field col s6">
-          <input id="mobile" type="text" class="validate" name="mobile">
+          <input id="mobile" type="text" class="validate" name="mobile" required>
           <label for="mobile">Mobile</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="password" type="text" class="validate" name="password">
+          <input id="password" type="text" class="validate" name="password" required>
           <label for="password">Password</label>
         </div>
         <div class="input-field col s6">
-          <input id="repassword" type="text" class="validate" name="repassword">
+          <input id="repassword" type="text" class="validate" name="repassword" required>
           <label for="repassword">Re enter password</label>
         </div>
       </div>
