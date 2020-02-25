@@ -1,7 +1,7 @@
 <?php
   
   session_start();
-  if ($_SESSION['email']) {
+  if ($_SESSION['id']) {
     header('location: ./index.php');
   } else {
     include './connection.php';
@@ -14,7 +14,7 @@
       if ($login) {
         if ($login -> num_rows > 0) {
           $row = $login -> fetch_assoc();
-            $user_id = $row['id']''
+            $user_id = $row['id'];
             $fname = $row['fname'];
             $lname = $row['lname'];
             $email = $row['email'];
@@ -27,7 +27,7 @@
         if ($pass === $password) {
           print 'welcome' . $fname;
           session_start();
-          $_SESSION['id'] = $row['id'];
+          $_SESSION['id'] = $user_id;
           $_SESSION['email'] = $email;
           $_SESSION['name'] = $fname . " " . $lname;
           print $_SESSION['name'];
