@@ -20,8 +20,8 @@
         $err = 'password must contain one small case letter';    
       } elseif (!preg_match("/[A-Z]/", $password)) {
         $err = 'password must contain at least one capital letter';
-      } elseif (!preg_match("/[!@#%]/", $password)) {
-        $err = 'password must have either of !, @, #, %';
+      } elseif (!preg_match("/[!@#%$]/", $password)) {
+        $err = 'password must have either of !, @, #, %, $';
       } else {
         $err ='nice password';
         $checkEmailQuery = "SELECT email FROM registeration WHERE email = '$email'";
@@ -33,8 +33,9 @@
           $insertQuery = "INSERT INTO registeration (fname, lname, email, mobile, password) VALUES ('$fname', '$lname', '$email', '$mobile', '$password')";
           $insert = $con -> query($insertQuery);
           if ($insert) {
-            print 'Yee-haw';
+            // print 'Yee-haw';
             print $err;
+            header('location: ./signup.php');
           }
         }
       }
@@ -85,7 +86,7 @@
           <label for="password">Password</label>
         </div>
         <div class="input-field col s6">
-          <input id="repassword" password="text" class="validate" name="repassword" required>
+          <input id="repassword" type="password" class="validate" name="repassword" required>
           <label for="repassword">Re enter password</label>
         </div>
       </div>
