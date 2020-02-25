@@ -11,8 +11,14 @@
 <body> -->
 
   <?php 
-    $title = 'PhoneBook Home';
-    include ('./header.php');
+    session_start();
+    if (isset($_SESSION['email'])) {
+      $title = 'PhoneBook Home';
+      include ('./header.php');
+    } else {
+      header('location: ./please-login.php');
+    }
+
   ?>
 
   <div class="container" style="margin-top: 5%;">

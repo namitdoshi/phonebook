@@ -2,7 +2,7 @@
   
   session_start();
   if ($_SESSION['email']) {
-    header('location: ./user-home.php');
+    header('location: ./index.php');
   } else {
     include './connection.php';
     if (isset($_POST['login'])) {
