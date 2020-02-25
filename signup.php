@@ -1,4 +1,6 @@
 <?php 
+  include './connection.php';
+  $err =' ';
   if (isset($_POST['submit'])) {
     // echo 'a';
     $fname = $_POST['fname'];
@@ -7,13 +9,13 @@
     $mobile = $_POST['mobile'];
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
-    $err ='';
     
     if ($password == $repassword) {
+      print $err;
       if (strlen($password) < 8 || strlen($password) > 16) {
-        print 'password must be lenght between 8-12';
+        $err = 'password must be of lenght between 8-12';
       } elseif (!preg_match ("/[0-9]/", $password)) {
-        $err = 'password must contain at leat one number';
+        $err = 'password must contain at least one number';
       } elseif (!preg_match("/[a-z]/", $password)) {
         $err = 'password must contain one small case letter';    
       } elseif (!preg_match("/[A-Z]/", $password)) {
@@ -21,10 +23,23 @@
       } elseif (!preg_match("/[!@#%]/", $password)) {
         $err = 'password must have either of !, @, #, %';
       } else {
-        print 'nice password';
+        $err ='nice password';
+        $checkEmailQuery = "SELECT email FROM registeration WHERE email = '$email'";
+        $checkEmai = $con -> query($checkEmailQuery);
+        if ($checkEmai -> num_rows > 0) {
+          $err = 'email already exists';
+        } else {
+          $password = md5($password);
+          $insertQuery = "INSERT INTO registeration (fname, lname, email, mobile, password) VALUES ('$fname', '$lname', '$email', '$mobile', '$password')";
+          $insert = $con -> query($insertQuery);
+          if ($insert) {
+            print 'Yee-haw';
+            print $err;
+          }
+        }
       }
     } else {
-      echo 'password do not match!';
+      $err = 'password do not match!';
     }
   }
 ?>
@@ -77,7 +92,10 @@
       <div class="row">
         <div class="center">
           <input type="submit" value="Submit" class="input-field btn" name="submit">
-          <?php echo "<br>". $err; ?>
+          <?php 
+            echo "<br>";
+            echo $err; 
+          ?>
         </div>
       </div>
     </form>
