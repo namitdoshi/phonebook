@@ -14,6 +14,7 @@
       if ($login) {
         if ($login -> num_rows > 0) {
           $row = $login -> fetch_assoc();
+            $user_id = $row['id']''
             $fname = $row['fname'];
             $lname = $row['lname'];
             $email = $row['email'];
@@ -26,6 +27,7 @@
         if ($pass === $password) {
           print 'welcome' . $fname;
           session_start();
+          $_SESSION['id'] = $row['id'];
           $_SESSION['email'] = $email;
           $_SESSION['name'] = $fname . " " . $lname;
           print $_SESSION['name'];
