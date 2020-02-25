@@ -16,7 +16,7 @@
       $title = 'PhoneBook Home';
       include ('./header.php');
     } else {
-      header('location: ./please-login.php');
+      header('location: ./login.php');
     }
 
   ?>

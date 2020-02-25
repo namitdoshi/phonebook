@@ -120,6 +120,6 @@
     print 'name';
   }
 } else {
-  header('location: ./please-login.php');
+  header('location: ./login.php');
 }
 ?>

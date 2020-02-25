@@ -16,6 +16,7 @@
         <li><a href="./add-contact.php">Add Contact</a></li>
         <li><a href="./view.php">View Contacts</a></li>
         <li><a href="./add-group.php">Add Group</a></li>
+        <li><a href="./logout.php">Logout</a></li>
       </ul>
     </div>
   </nav>
