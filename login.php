@@ -24,7 +24,7 @@
         $_SESSION['email'] = $email;
         $_SESSION['name'] = $fname . " " . $lname;
         print $_SESSION['name'];
-        header('location: ./home.php');
+        header('location: ./user-home.php');
       } else {
         print '<br>' . 'incorrect password';
       }
