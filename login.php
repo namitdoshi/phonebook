@@ -31,7 +31,7 @@
           $_SESSION['email'] = $email;
           $_SESSION['name'] = $fname . " " . $lname;
           print $_SESSION['name'];
-          header('location: ./user-home.php');
+          header('location: ./index.php');
         } else {
           print '<br>' . 'incorrect password';
         }
