@@ -51,9 +51,10 @@
     if (isset($_SESSION['id'])) {
         
       include './connection.php';
+      $user_id = $_SESSION['id'];
       // print $_GET['id'];
       // $searchData = '';
-      $flag = 0;
+      // $flag = 0;
 
       // if ($flag == 0) {
       //   $read = "SELECT * FROM `user_details`";
@@ -61,11 +62,12 @@
       // }
 
       if (isset($_POST['search']) and isset($_POST['searchBy'])) {
-        print 'asd';
+        // print 'asd';
         $searchBy = $_POST['searchBy'];
-        print $searchBy;
+        // print $searchBy;
         $searchData = $_POST['search-box'];
-        $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
+        // $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
+        $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData' AND user_id = '$user_id'";
         $result = $con->query($searchQuery);
         if ($result) {
           print 'match';
@@ -74,7 +76,8 @@
 
       elseif (isset($_GET['sortByfname'])) {
         // print 'beepbop';
-        $sortFname = "SELECT * FROM user_details ORDER BY fname";
+        // $sortFname = "SELECT * FROM user_details ORDER BY fname";
+        $sortFname = "SELECT * FROM user_details ORDER BY fname AND user_id = '$user_id'";
         $result = $con->query($sortFname);
       //   if ($result) {
       //     print 'match';
@@ -82,7 +85,8 @@
       }
       
       else {
-        $read = "SELECT * FROM `user_details`";
+        // $read = "SELECT * FROM `user_details`";
+        $read = "SELECT * FROM `user_details` WHERE user_id = '$user_id'";
         $result = $con->query($read);
       }
 
@@ -101,7 +105,8 @@
       if (isset($_GET['id'])) {
         $id = $_GET['id'];
 
-        $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
+        // $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
+        $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id' AND user_id = '$user_id'";
         $res = $con->query($delete_query);
         if ($res) { print 'pass1'; }
       }
@@ -122,13 +127,14 @@
           if ($filename[1] == 'csv') {
             $file = fopen($_FILES['file']['tmp_name'], "r");
             while ($data = fgetcsv($file)) {
-              $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$data[2]'";
+              // $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$data[2]'";
+              $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$data[2]' AND user_id = '$user_id'";
               $checkEmail = $con -> query($checkEmailQuery);
 
               if ($checkEmail -> num_rows > 0) {
                 continue;
               } else {
-                $importQuery = "INSERT INTO user_details (fname, lname, email, mobile, age, hobby, gender, address) VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$data[7]')";
+                $importQuery = "INSERT INTO user_details (user_id, fname, lname, email, mobile, age, hobby, gender, address) VALUES ('$user_id', '$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', '$data[5]', '$data[6]', '$data[7]')";
                 $import = $con -> query($importQuery);
               }
             }
