@@ -33,7 +33,7 @@
   
       // print $address;
   
-      $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', email='$email', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE id = '$id'";
+      $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', email='$email', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE user_id = '$id'";
   
       $insert = $con->query($update_user);
   
@@ -51,7 +51,7 @@
       print 'name';
     }
 
-      $read = "SELECT * FROM user_details WHERE id='$id'";
+      $read = "SELECT * FROM user_details WHERE user_id='$id'";
       $result = $con->query($read);
     //   if($result) { print 'papapaaasaad'; }
       // $result = mysqli_query($con, $read);

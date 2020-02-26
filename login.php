@@ -13,9 +13,13 @@
       $login = $con -> query($loginQuery);
       $adminLoginQuery = "SELECT * FROM admin WHERE email = '$email'";
       $adminLogin = $con -> query($adminLoginQuery);
+      // if ($login) {
+      //   print 'ssds';
+      // }
       if ($login -> num_rows > 0) {
+        print 'aaaa';
         $row = $login -> fetch_assoc();
-        $user_id = $row['id'];
+        $user_id = $row['user_id'];
         $fname = $row['fname'];
         $lname = $row['lname'];
         $email = $row['email'];
@@ -40,10 +44,12 @@
         $user_id = $row['id'];
         $email = $row['email'];
         $pass = $row['password'];
+        $type = $row['type'];
         if ($pass === $password) {
           session_start();
           $_SESSION['id'] = $user_id;
           $_SESSION['email'] = $email;
+          $_SESSION['type'] = $type;
           header('location: ./admin.php');
         }
       } else {
