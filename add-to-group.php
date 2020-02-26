@@ -61,7 +61,7 @@
           $insertContacts = $con -> query($addContactQuery);
     
           if ($insertContacts) {
-            header('location: ./add-to-group.php');
+            header('location: ./add-to-group.php?groupId=' . $groupId);
           } else {
             print 'Please try again!';
           }
