@@ -36,7 +36,7 @@
           <label>Search By</label>
         </div>
         <div class="input-field col-3">
-          <input type="submit" value="Search" class="waves-effect waves-light btn" name="search">
+          <input type="submit" value="Search" class="input-field input-btn btn" name="search">
           <!-- <a href="" class="waves-effect waves-light btn" name="search">Search</a> -->
         </div>
       </div>
@@ -165,7 +165,7 @@
         </div>
         <!-- </div>
     <div class="row center"> -->
-        <input type="submit" value="Save Changes" class="waves-effect waves-light btn" name="add-contact">
+        <input type="submit" value="Save Changes" class="input-field input-btn btn" name="add-contact">
       </form>
     </div>
   </div>
