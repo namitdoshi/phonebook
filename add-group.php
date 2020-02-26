@@ -58,7 +58,7 @@
             <label for="group-name">Group Name</label>
           </div>
           <div class="input-field col">
-            <input class="waves-effect waves-light btn" type="submit" value="submit" name="submit">
+            <input class="input-btn input-field btn" type="submit" value="submit" name="submit">
           </div>
         </div>
       </div>

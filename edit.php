@@ -108,8 +108,8 @@
         </div>
       </div>
       <div class="center">
-        <input class="waves-effect waves-light btn" type="submit" value="update" name="submit">
-        <a href="./view.php" class="waves-effect waves-light btn">View Submitted Forms</a>
+        <input class="input-btn input-field btn" type="submit" value="update" name="submit">
+        <!-- <a href="./view.php" class="waves-effect waves-light btn">View Saved Contacts</a> -->
       </div>
       <?php
           }
