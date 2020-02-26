@@ -4,6 +4,7 @@
 
     $user_id = $_SESSION['id'];
     $err = '';  
+    $title = 'Reset Password';
     include './header.php';
     include './connection.php';
     if (isset($_POST['reset'])) {
