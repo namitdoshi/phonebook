@@ -14,6 +14,7 @@
     session_start();
     if (isset($_SESSION['id'])) {
 
+      $user_id = $_SESSION['id'];
       $title = 'Add Contacts to Group';
       include ('./header.php');
       include './connection.php';
@@ -31,26 +32,18 @@
         $searchBy = $_POST['searchBy'];
         print $searchBy;
         $searchData = $_POST['search-box'];
-        $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
+        // $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
+        $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData' AND user_id = '$user_id'";
         $result = $con->query($searchQuery);
         if ($result) {
           print 'match';
         } else { print 'not match'; }
       }
-
-      elseif (isset($_GET['sortByfname'])) {
-        // print 'beepbop';
-        $sortFname = "SELECT * FROM user_details ORDER BY fname";
-        $result = $con->query($sortFname);
-      //   if ($result) {
-      //     print 'match';
-      //   } else { print 'not match'; }
-      }
-      
       else {
         $gId = $_GET['groupId'];
         // $read = "SELECT * FROM `user_details`";
-        $read = "SELECT * FROM user_details WHERE id NOT IN (SELECT contactid from group_contacts_list WHERE groupId = '$gId')";
+        // $read = "SELECT * FROM user_details WHERE id NOT IN (SELECT contactid from group_contacts_list WHERE groupId = '$gId')";
+        $read = "SELECT * FROM user_details WHERE id NOT IN (SELECT contactid from group_contacts_list WHERE groupId = '$gId') AND user_id = '$user_id'";
         $result = $con->query($read);
       }
 
@@ -63,7 +56,8 @@
         print 'sasa';
         foreach ($_POST['contacts'] as $contact) {
     
-          $addContactQuery = "INSERT INTO `group_contacts_list` (`groupId`, `contactidid`) VALUES ('$groupId', '$contact')";
+          // $addContactQuery = "INSERT INTO `group_contacts_list` (`groupId`, `contactidid`) VALUES ('$groupId', '$contact')";
+          $addContactQuery = "INSERT INTO `group_contacts_list` (`user_id`, `groupId`, `contactid`) VALUES ('$user_id', '$groupId', '$contact')";
           $insertContacts = $con -> query($addContactQuery);
     
           if ($insertContacts) {
