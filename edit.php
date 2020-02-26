@@ -11,18 +11,13 @@
 <body> -->
 
 <?php 
+  session_start();
+  if (isset($_SESSION['id'])) {
     $title = 'Edit Contacts';
-    include ('./header.php');
-?>
-  <div class="container">
-    <form class="col s12" method="POST">
-      <?php 
-      include './connection.php';
+    include ('./admin-header.php');
+    include './connection.php';
       $id = $_GET['id'];
     //   print $email;
-
-    
-    include './connection.php';
     // print $email;
     if (isset($_POST['submit'])) {
       $fname = $_POST['fname'];
@@ -62,7 +57,11 @@
       // $result = mysqli_query($con, $read);
       if ($result -> num_rows > 0) {
         // print 'pass';
-        while($row=$result->fetch_assoc()) {
+?>
+  <div class="container">
+    <form class="col s12" method="POST">
+      <?php 
+             while($row=$result->fetch_assoc()) {
     ?>
       <div class="row">
         <div class="input-field col s6">
@@ -114,6 +113,9 @@
       <?php
           }
         }
+      } else {
+        header('location: ./login.php');
+      }
       ?>
     </form>
   </div>
