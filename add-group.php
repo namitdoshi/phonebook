@@ -62,7 +62,9 @@
         </div>
       </div>
     </form>
-
+    <?php
+      if ($showGroups -> num_rows > 0) {
+    ?>
     <div class="row">
       <table>
         <thead>
@@ -76,7 +78,6 @@
 
         <tbody>
           <?php 
-            if ($showGroups -> num_rows > 0) {
               while($row=$showGroups->fetch_assoc()) {
           ?>
           <tr>
@@ -87,6 +88,8 @@
           </tr>
           <?php 
               }
+            } else {
+              print 'no groups exist, add some!';
             }
           } else {
             header('location: ./login.php');
