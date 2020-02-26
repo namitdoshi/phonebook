@@ -7,47 +7,7 @@
 
 <?php 
   include './header.php';
-?>
-
-  <div class="container-fluid">
-    <div class="row center">
-      <div style="width: 30%; margin: auto;">
-        <form method="POST" class="col s12" enctype="multipart/form-data">
-          <div class="file-field input-field col s9">
-            <div class="btn">
-              <span>Import</span>
-              <input type="file" name="file" required>
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text" required>
-            </div>
-          </div>
-          <div class="col s3">
-            <input type="submit" value="Submit" name="submit-file" class="input-field btn">
-          </div>
-        </form>
-      </div>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>First Name <a href="?sortByfname=true" class="waves-effect waves-light btn" name="sort">Sort</a></th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Mobile Number</th>
-          <th>Age</th>
-          <th>Hobby</th>
-          <th>Gender</th>
-          <th>Address</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-
-      <tbody>
-  <?php
-    session_start();
+  session_start();
     if (isset($_SESSION['id'])) {
         
       include './connection.php';
@@ -156,8 +116,48 @@
       // $result = mysqli_query($con, $read);
       if ($result -> num_rows > 0) {
         // print 'pass';
+    
+?>
+
+  <div class="container-fluid">
+    <div class="row center">
+      <div style="width: 30%; margin: auto;">
+        <form method="POST" class="col s12" enctype="multipart/form-data">
+          <div class="file-field input-field col s9">
+            <div class="btn">
+              <span>Import</span>
+              <input type="file" name="file" required>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" required>
+            </div>
+          </div>
+          <div class="col s3">
+            <input type="submit" value="Submit" name="submit-file" class="input-field btn">
+          </div>
+        </form>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>First Name <a href="?sortByfname=true" class="waves-effect waves-light btn" name="sort">Sort</a></th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Mobile Number</th>
+          <th>Age</th>
+          <th>Hobby</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+  <?php
         while($row=$result->fetch_assoc()) {
-  
   ?>
         <tr>
           <td><?php echo $row['id'] ?></td>
@@ -174,13 +174,7 @@
         </tr>
         <?php
       }
-    }
-    else {
-      print 'fail';
-    }
-  } else {
-    header('location: ./login.php');
-  }
+    
 ?>
       </tbody>
     </table>
@@ -218,3 +212,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./main.js"></script>
 </body>
+
+<?php
+  } else {
+    print 'There are no contacts in your account';
+  }
+} else {
+  header('location: ./login.php');
+}
+?>
