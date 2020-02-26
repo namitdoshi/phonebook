@@ -84,7 +84,7 @@
           <label for="email">Email</label>
         </div>
         <div class="input-field col s6">
-          <input id="mobile" type="text" class="validate" name="mobile" required>
+          <input id="mobile" type="text" class="validate" name="mobile" maxlength="10" required>
           <label for="mobile">Mobile</label>
         </div>
       </div>

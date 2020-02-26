@@ -35,7 +35,7 @@
           <label for="email">Email</label>
         </div>
         <div class="input-field col s6">
-          <input id="number" type="number" class="validate" name="number" max=10 required>
+          <input id="number" type="number" class="validate" name="number" maxlength="10" required>
           <label for="number">Mobile Number</label>
         </div>
       </div>
