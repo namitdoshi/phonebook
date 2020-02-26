@@ -37,6 +37,7 @@
         }
       } elseif($adminLogin -> num_rows > 0) {
         $row = $adminLogin -> fetch_assoc();
+        $user_id = $row['id'];
         $email = $row['email'];
         $pass = $row['password'];
         if ($pass === $password) {
