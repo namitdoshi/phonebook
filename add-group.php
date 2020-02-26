@@ -10,42 +10,41 @@
 </head> -->
 
 <?php 
+  session_start();
+  if (isset($_SESSION['id'])) {
     $title = 'Add Group';
     include ('./header.php');
-?>
-
-<?php 
-  include './connection.php';  
-  // print $_POST['group-name'];
-  // $_POST['group-name'] = '';
-  // print $_POST['group-name'];
-  // print '<br>';
-  if (isset($_POST['submit']) and isset($_POST['group-name'])) {
-    print 'phase 1';
-    $groupName = $_POST['group-name'];
-    $checkGroupQuery = "SELECT * FROM group_details WHERE groupName = '$groupName'";
-    $checkGroupExists = $con -> query($checkGroupQuery);
-    if ($checkGroupExists -> num_rows > 0) {
-      echo 'the group name already exists please choose another!';
-    } else {
-        $insertIntoGroup = "INSERT INTO group_details (groupName) VALUES ('$groupName')";
-        $result = $con -> query($insertIntoGroup);
-        if ($result) {
-          print 'Group created successfully!';
-          // unset($_POST['group-name']);
-          // unset($groupName);
-          print '<br>';
-          // print $groupName;
-          header('location: ./add-group.php');
-        } else {
-          print 'fail';
-        }
+  
+    include './connection.php';  
+    // print $_POST['group-name'];
+    // $_POST['group-name'] = '';
+    // print $_POST['group-name'];
+    // print '<br>';
+    if (isset($_POST['submit']) and isset($_POST['group-name'])) {
+      print 'phase 1';
+      $groupName = $_POST['group-name'];
+      $checkGroupQuery = "SELECT * FROM group_details WHERE groupName = '$groupName'";
+      $checkGroupExists = $con -> query($checkGroupQuery);
+      if ($checkGroupExists -> num_rows > 0) {
+        echo 'the group name already exists please choose another!';
+      } else {
+          $insertIntoGroup = "INSERT INTO group_details (groupName) VALUES ('$groupName')";
+          $result = $con -> query($insertIntoGroup);
+          if ($result) {
+            print 'Group created successfully!';
+            // unset($_POST['group-name']);
+            // unset($groupName);
+            print '<br>';
+            // print $groupName;
+            header('location: ./add-group.php');
+          } else {
+            print 'fail';
+          }
+      }
     }
-  }
-
-  $showGroupsQuery = "SELECT * FROM group_details";
-  $showGroups = $con -> query($showGroupsQuery);
-
+  
+    $showGroupsQuery = "SELECT * FROM group_details";
+    $showGroups = $con -> query($showGroupsQuery);
 ?>
 
 <body>
@@ -89,6 +88,9 @@
           <?php 
               }
             }
+          } else {
+            header('location: ./login.php');
+          }
           ?>
       </table>
     </div>
