@@ -35,7 +35,7 @@
           <label for="email">Email</label>
         </div>
         <div class="input-field col s6">
-          <input id="number" type="number" class="validate" name="number" required>
+          <input id="number" type="number" class="validate" name="number" max=10 required>
           <label for="number">Mobile Number</label>
         </div>
       </div>
@@ -92,6 +92,7 @@
     $hobby = $_POST['hobby'];
     $gender = $_POST['gender'];
     $address = $_POST['address'];
+    $user_id = $_SESSION['id'];
 
     // print $address;
 
@@ -101,7 +102,7 @@
     if ($checkEmail -> num_rows > 0) {
       print 'email already exixsts, please use another email and try again';
     } else {
-      $reg_user = "INSERT into user_details (fname, lname, email, mobile, age, hobby, gender, address) values('$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
+      $reg_user = "INSERT into user_details (user_id, fname, lname, email, mobile, age, hobby, gender, address) values('$user_id', '$fname', '$lname', '$email', '$number', '$age', '$hobby', '$gender', '$address' )";
 
       $insert = $con->query($reg_user);
 

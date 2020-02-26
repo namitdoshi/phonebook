@@ -56,7 +56,7 @@
 
 <body>
 
-  <div class="container">>
+  <div class="container">
     <form method="POST" class="">
       <div class="row">
         <div class="col s4"></div>
