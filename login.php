@@ -11,19 +11,19 @@
       // $loginQuery = "SELECT fname, lname, email, mobile FROM registeration WHERE email = '$email' AND password = '$password'";
       $loginQuery = "SELECT * FROM registeration WHERE email = '$email'";
       $login = $con -> query($loginQuery);
-      if ($login) {
-        if ($login -> num_rows > 0) {
-          $row = $login -> fetch_assoc();
-            $user_id = $row['id'];
-            $fname = $row['fname'];
-            $lname = $row['lname'];
-            $email = $row['email'];
-            $mobile = $row['mobile'];
-            $pass = $row['password'];
-          
-          // print $pass . "<br>";
-          // print md5($password);
-        }
+      $adminLoginQuery = "SELECT * FROM admin WHERE email = '$email'";
+      $adminLogin = $con -> query($adminLoginQuery);
+      if ($login -> num_rows > 0) {
+        $row = $login -> fetch_assoc();
+        $user_id = $row['id'];
+        $fname = $row['fname'];
+        $lname = $row['lname'];
+        $email = $row['email'];
+        $mobile = $row['mobile'];
+        $pass = $row['password'];
+      
+       // print $pass . "<br>";
+      // print md5($password);
         if ($pass === $password) {
           print 'welcome' . $fname;
           session_start();
@@ -35,11 +35,21 @@
         } else {
           print '<br>' . 'incorrect password';
         }
+      } elseif($adminLogin -> num_rows > 0) {
+        $row = $adminLogin -> fetch_assoc();
+        $email = $row['email'];
+        $pass = $row['password'];
+        if ($pass === $password) {
+          session_start();
+          $_SESSION['id'] = $user_id;
+          $_SESSION['email'] = $email;
+          header('location: ./admin.php');
+        }
       } else {
-        print 'incorrect email';
+        print 'incorrect email or password';
       }
-    } 
-  }
+    }
+  } 
 ?>
 
 
