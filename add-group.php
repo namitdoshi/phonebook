@@ -12,6 +12,7 @@
 <?php 
   session_start();
   if (isset($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
     $title = 'Add Group';
     include ('./header.php');
   
@@ -23,12 +24,14 @@
     if (isset($_POST['submit']) and isset($_POST['group-name'])) {
       print 'phase 1';
       $groupName = $_POST['group-name'];
-      $checkGroupQuery = "SELECT * FROM group_details WHERE groupName = '$groupName'";
+      // $checkGroupQuery = "SELECT * FROM group_details WHERE groupName = '$groupName'";
+      $checkGroupQuery = "SELECT * FROM group_details WHERE groupName = '$groupName' AND user_id = '$user_id'";
       $checkGroupExists = $con -> query($checkGroupQuery);
       if ($checkGroupExists -> num_rows > 0) {
         echo 'the group name already exists please choose another!';
       } else {
-          $insertIntoGroup = "INSERT INTO group_details (groupName) VALUES ('$groupName')";
+          // $insertIntoGroup = "INSERT INTO group_details (groupName) VALUES ('$groupName')";
+          $insertIntoGroup = "INSERT INTO group_details (user_id, groupName) VALUES ('$user_id', '$groupName')";
           $result = $con -> query($insertIntoGroup);
           if ($result) {
             print 'Group created successfully!';
@@ -43,7 +46,8 @@
       }
     }
   
-    $showGroupsQuery = "SELECT * FROM group_details";
+    // $showGroupsQuery = "SELECT * FROM group_details";
+    $showGroupsQuery = "SELECT * FROM group_details WHERE user_id = '$user_id'";
     $showGroups = $con -> query($showGroupsQuery);
 ?>
 
