@@ -16,6 +16,102 @@
 
       $title = 'Add Contacts to Group';
       include ('./header.php');
+      include './connection.php';
+      // print $_GET['id'];
+      // $searchData = '';
+      // $flag = 0;
+
+      // if ($flag == 0) {
+      //   $read = "SELECT * FROM `user_details`";
+      //   $result = $con->query($read);
+      // }
+
+      if (isset($_POST['search']) and isset($_POST['searchBy'])) {
+        print 'asd';
+        $searchBy = $_POST['searchBy'];
+        print $searchBy;
+        $searchData = $_POST['search-box'];
+        $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
+        $result = $con->query($searchQuery);
+        if ($result) {
+          print 'match';
+        } else { print 'not match'; }
+      }
+
+      elseif (isset($_GET['sortByfname'])) {
+        // print 'beepbop';
+        $sortFname = "SELECT * FROM user_details ORDER BY fname";
+        $result = $con->query($sortFname);
+      //   if ($result) {
+      //     print 'match';
+      //   } else { print 'not match'; }
+      }
+      
+      else {
+        $gId = $_GET['groupId'];
+        // $read = "SELECT * FROM `user_details`";
+        $read = "SELECT * FROM user_details WHERE id NOT IN (SELECT contactid from group_contacts_list WHERE groupId = '$gId')";
+        $result = $con->query($read);
+      }
+
+      if (isset($_POST['add-contact']) and isset($_GET['groupId'])) {
+        print 'kay';
+        // print $_POST['contacts'];
+        // $checkBox = implode(',', $_POST['contacts']);
+        // $selectvalue = $_POST['contacts'];
+        $groupId = $_GET['groupId'];
+        print 'sasa';
+        foreach ($_POST['contacts'] as $contact) {
+    
+          $addContactQuery = "INSERT INTO `group_contacts_list` (`groupId`, `contactidid`) VALUES ('$groupId', '$contact')";
+          $insertContacts = $con -> query($addContactQuery);
+    
+          if ($insertContacts) {
+            header('location: ./add-to-group.php');
+          } else {
+            print 'Please try again!';
+          }
+        }
+        // print $checkBox;
+        // $groupId = $_GET['groupId'];
+        // $addContactQuery = "INSERT INTO group_contact_list (groupId, id) VALUES ('$groupId', '" . $checkBox . "')";
+        // $insertContacts = $con -> query($addContactQuery);
+
+        // if ($insertContacts) {
+        //   print 'yay';
+        // } else {
+        //   print 'nay';
+        // }
+
+      }
+
+      // if (isset($_POST['search'])) {
+        // $searchData = $_POST['search-box'];
+        // $searchQuery = "SELECT * FROM user_details WHERE fname = '$searchData'";
+        // $result = $con->query($searchQuery);
+        // $flag = 1;
+        // print 'qorj';
+        // if ($result) {
+        //   print 'match';
+        // } else { print 'not match'; }
+      // }
+
+
+      // if (isset($_GET['id'])) {
+      //   $id = $_GET['id'];
+
+      //   $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
+      //   $res = $con->query($delete_query);
+      //   if ($res) { print 'pass1'; }
+      // }
+
+      // $read = "SELECT * FROM `user_details`";
+      // $result = $con->query($read);
+      
+      // $result = mysqli_query($con, $read);
+      if ($result -> num_rows > 0) {
+        // print 'pass';
+
 ?>
 
   <div class="container">
@@ -52,117 +148,13 @@
         <div class="input-field col s4">
           <select multiple name="contacts[]">
             <option value="" disabled selected>Choose option</option>
-            <!-- <option value="2">Option 2</option>
-          <option value="3">Option 3</option> -->
-
-  <?php
-    include './connection.php';
-    // print $_GET['id'];
-    // $searchData = '';
-    // $flag = 0;
-
-    // if ($flag == 0) {
-    //   $read = "SELECT * FROM `user_details`";
-    //   $result = $con->query($read);
-    // }
-
-    if (isset($_POST['search']) and isset($_POST['searchBy'])) {
-      print 'asd';
-      $searchBy = $_POST['searchBy'];
-      print $searchBy;
-      $searchData = $_POST['search-box'];
-      $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
-      $result = $con->query($searchQuery);
-      if ($result) {
-        print 'match';
-      } else { print 'not match'; }
-    }
-
-    elseif (isset($_GET['sortByfname'])) {
-      // print 'beepbop';
-      $sortFname = "SELECT * FROM user_details ORDER BY fname";
-      $result = $con->query($sortFname);
-    //   if ($result) {
-    //     print 'match';
-    //   } else { print 'not match'; }
-    }
-    
-    else {
-      $gId = $_GET['groupId'];
-      // $read = "SELECT * FROM `user_details`";
-      $read = "SELECT * FROM user_details WHERE id NOT IN (SELECT contactid from group_contacts_list WHERE groupId = '$gId')";
-      $result = $con->query($read);
-    }
-
-    if (isset($_POST['add-contact']) and isset($_GET['groupId'])) {
-      print 'kay';
-      // print $_POST['contacts'];
-      // $checkBox = implode(',', $_POST['contacts']);
-      // $selectvalue = $_POST['contacts'];
-      $groupId = $_GET['groupId'];
-      print 'sasa';
-      foreach ($_POST['contacts'] as $contact) {
-  
-        $addContactQuery = "INSERT INTO `group_contacts_list` (`groupId`, `contactidid`) VALUES ('$groupId', '$contact')";
-        $insertContacts = $con -> query($addContactQuery);
-  
-        if ($insertContacts) {
-          header('location: ./add-to-group.php');
-        } else {
-          print 'Please try again!';
-        }
-      }
-      // print $checkBox;
-      // $groupId = $_GET['groupId'];
-      // $addContactQuery = "INSERT INTO group_contact_list (groupId, id) VALUES ('$groupId', '" . $checkBox . "')";
-      // $insertContacts = $con -> query($addContactQuery);
-
-      // if ($insertContacts) {
-      //   print 'yay';
-      // } else {
-      //   print 'nay';
-      // }
-
-    }
-
-    // if (isset($_POST['search'])) {
-      // $searchData = $_POST['search-box'];
-      // $searchQuery = "SELECT * FROM user_details WHERE fname = '$searchData'";
-      // $result = $con->query($searchQuery);
-      // $flag = 1;
-      // print 'qorj';
-      // if ($result) {
-      //   print 'match';
-      // } else { print 'not match'; }
-    // }
-
-
-    // if (isset($_GET['id'])) {
-    //   $id = $_GET['id'];
-
-    //   $delete_query = "DELETE FROM `user_details` WHERE `user_details`.`id` = '$id'";
-    //   $res = $con->query($delete_query);
-    //   if ($res) { print 'pass1'; }
-    // }
-
-    // $read = "SELECT * FROM `user_details`";
-    // $result = $con->query($read);
-    
-    // $result = mysqli_query($con, $read);
-    if ($result -> num_rows > 0) {
-      // print 'pass';
-      while($row=$result->fetch_assoc()) {
- 
-  ?>
+            <?php 
+              while($row=$result->fetch_assoc()) {
+            ?>
             <option value="<?php echo $row['id']; ?>"><?php echo $row['fname'] . ' ' . $row['lname']; ?></option>
-<?php
-      }
-    }
-    else {
-      print 'fail';
-    }
-?>
-
+            <?php
+              }
+            ?>
           </select>
           <label>Add Contacts</label>
         </div>
@@ -182,6 +174,10 @@
 </body>
 
 <?php
+      }
+      else {
+        print 'No contacts found, add some first!';
+      }
     } else {
       header('location: ./login.php');
     }
