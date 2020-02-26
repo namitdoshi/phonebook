@@ -11,8 +11,11 @@
 <body> -->
 
 <?php 
-    $title = 'Add Contacts to Group';
-    include ('./header.php');
+    session_start();
+    if (isset($_SESSION['id'])) {
+
+      $title = 'Add Contacts to Group';
+      include ('./header.php');
 ?>
 
   <div class="container">
@@ -152,12 +155,12 @@
  
   ?>
             <option value="<?php echo $row['id']; ?>"><?php echo $row['fname'] . ' ' . $row['lname']; ?></option>
-            <?php
+<?php
       }
     }
-  else {
-    print 'fail';
-  }
+    else {
+      print 'fail';
+    }
 ?>
 
           </select>
@@ -177,3 +180,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="./main.js"></script>
 </body>
+
+<?php
+    } else {
+      header('location: ./login.php');
+    }
+?>
