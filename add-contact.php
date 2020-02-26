@@ -96,7 +96,7 @@
 
     // print $address;
 
-    $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$email'";
+    $checkEmailQuery = "SELECT email FROM user_details WHERE email = '$email' AND user_id = '$user_id'";
     $checkEmail = $con -> query($checkEmailQuery);
 
     if ($checkEmail -> num_rows > 0) {
