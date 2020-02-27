@@ -26,6 +26,7 @@
     <div class="center">
       <a href="./add-contact.php" class="waves-effect waves-light btn">Add Contact</a>
       <a href="./add-group.php" class="waves-effect waves-light btn">Add Group</a>
+      <a href="./deactivate.php" class="waves-effect waves-light btn">Deactivate Account</a>
     </div>
   </div>
   </div>
