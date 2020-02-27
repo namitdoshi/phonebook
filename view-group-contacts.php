@@ -1,9 +1,9 @@
 <?php 
-    $title = 'Add Contacts';
-    require_once ('./header.php');
-?>
-
-<?php 
+  session_start();
+  if (isset($_SESSION['id'])) {
+  $title = 'Add Contacts';
+  require_once ('./header.php');
+  
   include './connection.php';
   $groupID = $_GET['groupId'];
   // $viewContactsQuery = "SELECT * FROM group_contacts_list WHERE groupId = '$groupID' RIGHT JOIN user_details ON group_contacts_list.id = user_details.id" ;
@@ -95,6 +95,9 @@
     echo 'window.location.href = "./add-group.php";';
     echo '</script>';
   }
+} else {
+  header('location: ./login.php');
+}
 ?>
     </tbody>
   </table>
