@@ -5,18 +5,18 @@
     include ('./admin-header.php');
     include ('./connection.php');
 
-    // if (isset($_GET['id'])) {
-    //   $user_id = $_GET['id'];
-    //   // $deleteUserQuery = "DELETE FROM regiseration, group_details, user_details, group_contacts_list WHERE user_id = '$user_id'";
-    //   // $deleteUserQuery = "DELETE FROM `group_contacts_list`, `group_details`, `registeration`, `user_details` WHERE group_contacts_list.user_id = '$user_id' AND group_details.user_id = '$user_id' AND registeration.user_id = '$user_id' AND user_details.user_id = '$user_id'";
-    //   $deleteUser = $con -> query($deleteUserQuery);
-    //   if ($deleteUser) {
-    //     header('location: ./admin.php');
-    //   } else {
-    //     print 'abc';
-    //   }
+    if (isset($_GET['id'])) {
+      $user_id = $_GET['id'];
+      $deleteUserQuery = "UPDATE registeration r, user_details u, group_contacts_list g1, group_details g2 SET r.status = 'deleted', u.status = 'deleted', g1.status = 'deleted', g2.status = 'active' WHERE user_id = $user_id";
+      $deleteUser = $con -> query($deleteUserQuery);
+    // UPDATE group_contacts_list g1, group_details g2 SET g1.status = 'active', g2.status = 'active'
+      if ($deleteUser) {
+        header('location: ./admin.php');
+      } else {
+        print 'abc';
+      }
 
-    // }
+    }
 
     $viewUserQuery = "SELECT * FROM registeration";
     $viewUser = $con -> query($viewUserQuery);
