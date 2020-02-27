@@ -111,7 +111,7 @@
         // echo 'alert("Contact added successfully");'; 
         // echo 'window.location.href = "./add-group.php";';
         // echo '</script>';
-        header('location: ./add-contact.php');
+        header('location: ./view.php');
       } else {
         print 'fail';
       }
