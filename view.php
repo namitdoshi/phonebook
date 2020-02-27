@@ -6,6 +6,7 @@
 <body> -->
 
 <?php 
+  $title = 'View all Contacts';
   include './header.php';
   session_start();
     if (isset($_SESSION['id'])) {
@@ -29,9 +30,9 @@
         // $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
         $searchQuery = "SELECT * FROM user_details WHERE user_id = '$user_id' AND ($searchBy LIKE '%$searchData%')";
         $result = $con->query($searchQuery);
-        if ($result) {
-          print 'match';
-        } else { print 'not match'; }
+        // if ($result) {
+        //   print 'match';
+        // } else { print 'not match'; }
       }
 
       elseif (isset($_GET['sortByfname'])) {
