@@ -39,7 +39,7 @@
     <?php
     while ($row = $viewUser -> fetch_assoc()) {
     ?>
-      <tr>
+      <tr style="<?php if ($row['status']=='deactivated') { echo 'background-color: #f54278;';}?>">
           <td><?php echo $row['user_id'] ?></td>
           <td><?php echo $row['fname'] ?></td>
           <td><?php echo $row['lname'] ?></td>
