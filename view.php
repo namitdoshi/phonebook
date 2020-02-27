@@ -37,7 +37,7 @@
       elseif (isset($_GET['sortByfname'])) {
         // print 'beepbop';
         // $sortFname = "SELECT * FROM user_details ORDER BY fname";
-        $sortFname = "SELECT * FROM user_details ORDER BY fname AND user_id = '$user_id'";
+        $sortFname = "SELECT * FROM user_details WHERE user_id = '$user_id' ORDER BY fname";
         $result = $con->query($sortFname);
       //   if ($result) {
       //     print 'match';
