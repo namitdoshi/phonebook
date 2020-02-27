@@ -33,7 +33,7 @@
         print $searchBy;
         $searchData = $_POST['search-box'];
         // $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData'";
-        $searchQuery = "SELECT * FROM user_details WHERE $searchBy = '$searchData' AND user_id = '$user_id'";
+        $searchQuery = "SELECT * FROM user_details WHERE $searchBy LIKE '%$searchData%' AND user_id = '$user_id'";
         $result = $con->query($searchQuery);
         if ($result) {
           print 'match';
