@@ -7,7 +7,7 @@
 
     if (isset($_GET['id'])) {
       $user_id = $_GET['id'];
-      $deleteUserQuery = "UPDATE registeration r, user_details u, group_contacts_list g1, group_details g2 SET r.status = 'deleted', u.status = 'deleted', g1.status = 'deleted', g2.status = 'active' WHERE user_id = $user_id";
+      $deleteUserQuery = "UPDATE registeration r, user_details u, group_contacts_list g1, group_details g2 SET r.status = 'deleted', u.status = 'deleted', g1.status = 'deleted', g2.status = 'active' WHERE (r.user_id = '$user_id' AND u.user_id = '$user_id' AND g1.user_id = '$user_id' AND g2.user_id = '$user_id')";
       $deleteUser = $con -> query($deleteUserQuery);
     // UPDATE group_contacts_list g1, group_details g2 SET g1.status = 'active', g2.status = 'active'
       if ($deleteUser) {
@@ -18,7 +18,7 @@
 
     }
 
-    $viewUserQuery = "SELECT * FROM registeration";
+    $viewUserQuery = "SELECT * FROM registeration WHERE status = 'active' OR status = 'deactivated'";
     $viewUser = $con -> query($viewUserQuery);
     if ($viewUser -> num_rows > 0) {
 ?>
