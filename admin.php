@@ -45,7 +45,7 @@
           <td><?php echo $row['lname'] ?></td>
           <td><?php echo $row['email'] ?></td>
           <td><?php echo $row['mobile'] ?></td>
-          <td><a class="waves-effect waves-light btn" href="./edit.php?id=<?php echo $row['user_id']?>">Edit</a></td>
+          <td><a class="waves-effect waves-light btn" href="./edit-user.php?id=<?php echo $row['user_id']?>">Edit</a></td>
           <td><a href="./admin-password-reset.php?id=<?php echo $row['user_id']?>" class="waves-effect waves-light btn">Reset Password</a></td>
           <td><a class="waves-effect waves-light btn" href="?id=<?php echo $row['user_id']; ?>" name="delete">Delete</a></td>
         </tr>
