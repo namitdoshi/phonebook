@@ -14,12 +14,14 @@
   session_start();
   if (isset($_SESSION['id'])) {
     $title = 'Edit Contacts';
-    include ('./admin-header.php');
+    include ('./header.php');
     include './connection.php';
-      $id = $_GET['id'];
+    $user_id = $_SESSION['id'];
+    $id = $_GET['id'];
     //   print $email;
     // print $email;
     if (isset($_POST['submit'])) {
+      // print $address;
       $fname = $_POST['fname'];
       $lname = $_POST['lname'];
       // print "<br>";
@@ -30,13 +32,9 @@
       $hobby = $_POST['hobby'];
       $gender = $_POST['gender'];
       $address = $_POST['address'];
-  
-      // print $address;
-  
-      $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', email='$email', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE user_id = '$id'";
-  
+      $update_user = "UPDATE user_details SET fname = '$fname', lname = '$lname', email='$email', mobile = '$number', age = '$age', hobby = '$hobby', gender = '$gender', address = '$address' WHERE id = '$id' AND user_id = '$user_id'";
       $insert = $con->query($update_user);
-  
+
       if ($insert) {
         // print 'pass';
         // echo "<script>";
@@ -46,22 +44,21 @@
       } else {
         print 'fail';
       }
-  
     } else {
       print 'name';
     }
-
-      $read = "SELECT * FROM user_details WHERE user_id='$id'";
-      $result = $con->query($read);
+    print $id;
+    $read = "SELECT * FROM user_details WHERE id = '$id' AND user_id='$user_id'";
+    $result = $con->query($read);
     //   if($result) { print 'papapaaasaad'; }
       // $result = mysqli_query($con, $read);
-      if ($result -> num_rows > 0) {
-        // print 'pass';
+    if ($result -> num_rows > 0) {
+      print 'pass';
 ?>
   <div class="container">
     <form class="col s12" method="POST">
       <?php 
-             while($row=$result->fetch_assoc()) {
+        while($row=$result->fetch_assoc()) {
     ?>
       <div class="row">
         <div class="input-field col s6">
@@ -111,11 +108,13 @@
         <!-- <a href="./view.php" class="waves-effect waves-light btn">View Saved Contacts</a> -->
       </div>
       <?php
-          }
         }
       } else {
-        header('location: ./login.php');
-      }
+        print 'sfsdfsd';
+      } 
+    } else {
+      header('location: ./login.php');
+    }
       ?>
     </form>
   </div>
