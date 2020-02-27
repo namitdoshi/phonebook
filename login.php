@@ -9,7 +9,7 @@
       $email = $_POST['email'];
       $password = md5($_POST['password']);
       // $loginQuery = "SELECT fname, lname, email, mobile FROM registeration WHERE email = '$email' AND password = '$password'";
-      $loginQuery = "SELECT * FROM registeration WHERE email = '$email'";
+      $loginQuery = "SELECT * FROM registeration WHERE email = '$email' and status = 'active'";
       $login = $con -> query($loginQuery);
       $adminLoginQuery = "SELECT * FROM admin WHERE email = '$email'";
       $adminLogin = $con -> query($adminLoginQuery);
@@ -54,6 +54,8 @@
         }
       } else {
         print 'incorrect email or password';
+        print '<br>';
+        print 'contact admin if issue persists';
       }
     }
   } 
