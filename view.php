@@ -198,7 +198,7 @@
             </select>
             <label>Search By</label>
           </div>
-          <div class="input-field col-3">
+          <div class="col s3">
             <input type="submit" value="Search" class="input-btn input-field btn" name="search">
             <!-- <a href="" class="waves-effect waves-light btn" name="search">Search</a> -->
           </div>
