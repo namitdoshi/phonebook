@@ -15,7 +15,8 @@
       $password = $_POST['password'];
       $repassword = $_POST['repassword'];
       $security_question = $_POST['security-question'];
-      $security_answer = $_POST['security-answer'];
+      $security_answer = strtolower($_POST['security-answer']);
+      
       
       if ($password == $repassword) {
         print $err;
