@@ -14,6 +14,8 @@
       $mobile = $_POST['mobile'];
       $password = $_POST['password'];
       $repassword = $_POST['repassword'];
+      $security_question = $_POST['security-question'];
+      $security_answer = $_POST['security-answer'];
       
       if ($password == $repassword) {
         print $err;
@@ -35,7 +37,7 @@
             $err = 'email already exists';
           } else {
             $password = md5($password);
-            $insertQuery = "INSERT INTO registeration (fname, lname, email, mobile, password) VALUES ('$fname', '$lname', '$email', '$mobile', '$password')";
+            $insertQuery = "INSERT INTO registeration (fname, lname, email, mobile, password, status, securityQuestion, securityAnswer) VALUES ('$fname', '$lname', '$email', '$mobile', '$password', 'active', '$security_question', '$security_answer')";
             $insert = $con -> query($insertQuery);
             if ($insert) {
               // print 'Yee-haw';
