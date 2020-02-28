@@ -4,13 +4,34 @@
 
     $user_id = $_SESSION['id'];
     include './connection.php';
-    
+
     if ($_SESSION['type'] == 'admin') {
       setcookie('phonebook-admin',  $_SESSION['type'], time()+30);
+      header('location: ./admin.php');
     } else {
       $retrieveDataQuery = "SELECT securityQuestion, securityAnswer FROM registeration WHERE user_id = '$user_id'";
       $retrieveData = $con -> query($retrieveDataQuery);
       $row = $retrieveData -> fetch_assoc();
+      // print_r ($row);
+
+      if (isset($_POST['submit'])) {
+        $securityAnswer = strtolower($_POST['security-answer']);
+        print $securityAnswer;
+
+        if ($securityAnswer === $row['securityAnswer']) {
+          setcookie('phonebook-user', $_SESSION['type'], time()+30);
+          header('location: ./index.php');
+          print 'beep';
+        } else {
+          session_destroy();
+          header('location: ./login.php');
+        }
+
+      }
+    }
+  } else {
+    header('location: ./login.php');
+  }
 ?>
 
 <head>
@@ -40,11 +61,3 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
-
-<?php
-
-    }
-  } else {
-    header('location: ./login.php');
-  }
-?>
