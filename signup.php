@@ -100,11 +100,13 @@
       </div>
       <div class="row">
         <div class="center">
-          <?php 
-            echo $err . '<br>';
-          ?>
           <input type="submit" value="Submit" class="input-field btn" name="submit">
-          <br>
+          <?php 
+            if ($err != ' ') {
+              echo '<br>' . $err;
+            }
+            echo '<br>';
+          ?>
           <span>Already have an account? Login <a href="./login.php">here</a>.</span>
         </div>
       </div>
