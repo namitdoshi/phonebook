@@ -36,11 +36,11 @@
           $_SESSION['name'] = $fname . " " . $lname;
           $_SESSION['type'] = 'client';
           print $_SESSION['name'];
-          // if (isset($_COOKIE['phonebook'])) {
-          //   header('location: ./index.php');
-          // } else {
-          //   header('location: cookie-set.php');
-          // }
+          if (isset($_COOKIE['phonebook-user'])) {
+            header('location: ./index.php');
+          } else {
+            header('location: cookie-set.php');
+          }
         } else {
           print '<br>' . 'incorrect password';
         }
@@ -56,7 +56,7 @@
           $_SESSION['email'] = $email;
           $_SESSION['type'] = $type;
           // if (isset($_COOKIE['phonebook'])) {
-          //   header('location: ./admin.php');
+            // header('location: ./admin.php');
           // } else {
           //   header('location: cookie-set.php');
           // }
