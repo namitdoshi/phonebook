@@ -34,8 +34,13 @@
           $_SESSION['id'] = $user_id;
           $_SESSION['email'] = $email;
           $_SESSION['name'] = $fname . " " . $lname;
+          $_SESSION['type'] = 'client';
           print $_SESSION['name'];
-          header('location: ./index.php');
+          // if (isset($_COOKIE['phonebook'])) {
+          //   header('location: ./index.php');
+          // } else {
+          //   header('location: cookie-set.php');
+          // }
         } else {
           print '<br>' . 'incorrect password';
         }
@@ -50,7 +55,11 @@
           $_SESSION['id'] = $user_id;
           $_SESSION['email'] = $email;
           $_SESSION['type'] = $type;
-          header('location: ./admin.php');
+          // if (isset($_COOKIE['phonebook'])) {
+          //   header('location: ./admin.php');
+          // } else {
+          //   header('location: cookie-set.php');
+          // }
         }
       } else {
         print 'incorrect email or password';
@@ -94,6 +103,8 @@
       <div class="row">
         <div class="center">
           <input type="submit" value="Login" class="input-field btn" name="login">
+          <br>
+          <span>Don't have an account? Sign up <a href="./signup.php">here</a>.</span>
         </div>
     </form>
   </div>
