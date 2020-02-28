@@ -55,11 +55,11 @@
           $_SESSION['id'] = $user_id;
           $_SESSION['email'] = $email;
           $_SESSION['type'] = $type;
-          // if (isset($_COOKIE['phonebook'])) {
-            // header('location: ./admin.php');
-          // } else {
-          //   header('location: cookie-set.php');
-          // }
+          if (isset($_COOKIE['phonebook'])) {
+            header('location: ./admin.php');
+          } else {
+            header('location: cookie-set.php');
+          }
         }
       } else {
         print 'incorrect email or password';
