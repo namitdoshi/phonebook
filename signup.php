@@ -90,6 +90,21 @@
       </div>
       <div class="row">
         <div class="input-field col s6">
+          <select name="security-question" required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="What is you birth place?">What is you birth place?</option>
+            <option value="What is your pet's name?">What is your pet's name?</option>
+            <option value="What is vehicle's registeration number?">What is vehicle's registeration number?</option>
+          </select>
+          <label>Security Question</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="security-answer" type="text" class="validate" name="security-answer" required>
+          <label for="security-answer">Answer</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
           <input id="password" type="password" class="validate" name="password" required>
           <label for="password">Password</label>
         </div>
@@ -114,7 +129,11 @@
   </div>
 
   <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="./main.js"></script>
+  
 </body>
 
 </html>
