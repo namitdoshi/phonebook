@@ -35,7 +35,7 @@
   <div class="container" style="margin-top: 5%;">
   <div class="row">
     <div class="center">
-      <img src="./images/<?php echo $row['picture']; ?>" alt="" srcset="">
+      <img src="./images/<?php echo $row['picture']; ?>" height="200" width="150">
     </div>
   </div>
   <div class="row">
