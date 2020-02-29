@@ -15,6 +15,17 @@
     if (isset($_SESSION['id'])) {
       $title = 'PhoneBook Home';
       include ('./header.php');
+      include ('./connection.php');
+      $user_id = $_SESSION['id'];
+
+      $retrieveImageQuery = "SELECT picture FROM registeration WHERE  user_id = '$user_id'";
+      $retrieveImage = $con -> query($retrieveImageQuery);
+      if ($retrieveImage) {
+        print 'asdfgh';
+        $row = $retrieveImage -> fetch_assoc();
+      } else {
+        print 'dsds';
+      }
     } else {
       header('location: ./login.php');
     }
@@ -22,6 +33,11 @@
   ?>
 
   <div class="container" style="margin-top: 5%;">
+  <div class="row">
+    <div class="center">
+      <img src="./images/<?php echo $row['picture']; ?>" alt="" srcset="">
+    </div>
+  </div>
   <div class="row">
     <div class="center">
       <a href="./add-contact.php" class="waves-effect waves-light btn">Add Contact</a>
