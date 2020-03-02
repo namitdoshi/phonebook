@@ -11,7 +11,7 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="./index.php" class="brand-logo">Phone Book</a>
+      <a href="./home.php" class="brand-logo">Phone Book</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="./add-contact.php">Add Contact</a></li>
         <li><a href="./view.php">View Contacts</a></li>

@@ -20,7 +20,7 @@
 
         if ($securityAnswer === $row['securityAnswer']) {
           setcookie('phonebook-user', $_SESSION['type'], time()+30);
-          header('location: ./index.php');
+          header('location: ./home.php');
           print 'beep';
         } else {
           session_destroy();
