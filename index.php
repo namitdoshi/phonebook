@@ -21,10 +21,10 @@
       $retrieveImageQuery = "SELECT picture FROM registeration WHERE  user_id = '$user_id'";
       $retrieveImage = $con -> query($retrieveImageQuery);
       if ($retrieveImage) {
-        print 'asdfgh';
+        // print 'asdfgh';
         $row = $retrieveImage -> fetch_assoc();
       } else {
-        print 'dsds';
+        print 'no image found, please upload one!';
       }
     } else {
       header('location: ./login.php');

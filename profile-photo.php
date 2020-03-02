@@ -19,7 +19,7 @@
           $insertImageQuery = "UPDATE registeration SET picture = '$image' WHERE user_id = '$user_id'";
           $insertImage = $con -> query($insertImageQuery);
           if ($insertImage) {
-            print ' sfdfsdfs';
+            // print ' sfdfsdfs';
             if (move_uploaded_file($_FILES['user-image']['tmp_name'], $target)) {
               print 'uploaded';
             } else {
