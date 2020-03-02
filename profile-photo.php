@@ -64,7 +64,7 @@
       <?php
 
   } else {
-    header('./login.php');
+    header('./index.php');
   }
   
 ?>

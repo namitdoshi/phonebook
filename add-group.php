@@ -96,7 +96,7 @@
               print 'no groups exist, add some!';
             }
           } else {
-            header('location: ./login.php');
+            header('location: ./index.php');
           }
           ?>
       </table>

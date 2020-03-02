@@ -53,6 +53,6 @@
     }
     }
   } else {
-    header('location: ./login.php');
+    header('location: ./index.php');
   }
 ?>

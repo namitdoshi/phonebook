@@ -24,13 +24,13 @@
           print 'beep';
         } else {
           session_destroy();
-          header('location: ./login.php');
+          header('location: ./index.php');
         }
 
       }
     }
   } else {
-    header('location: ./login.php');
+    header('location: ./index.php');
   }
 ?>
 

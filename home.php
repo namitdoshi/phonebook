@@ -27,7 +27,7 @@
         print 'no image found, please upload one!';
       }
     } else {
-      header('location: ./login.php');
+      header('location: ./index.php');
     }
 
   ?>

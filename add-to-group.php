@@ -173,6 +173,6 @@
         print 'No contacts found, add some first!';
       }
     } else {
-      header('location: ./login.php');
+      header('location: ./index.php');
     }
 ?>

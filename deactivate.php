@@ -9,10 +9,10 @@ if (isset($_SESSION['id'])) {
   $deactivate = $con -> query($deactivateQuery);
   if ($deactivate) {
     session_destroy();
-    header('location: ./login.php');
+    header('location: ./index.php');
     // UPDATE registeration r, user_details u, group_contacts_list g1, group_details g2 SET r.status = 'active', u.status = 'active', g1.status = 'active', g2.status = 'active' WHERE (r.user_id = 5 AND u.user_id = 5 AND g1.user_id = 5 AND g2.user_id = 5)
   }
 } else {
-  header('loccation: ./login.php');
+  header('loccation: ./index.php');
 }
 ?>

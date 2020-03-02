@@ -125,7 +125,7 @@
             }
             echo '<br>';
           ?>
-          <span>Already have an account? Login <a href="./login.php">here</a>.</span>
+          <span>Already have an account? Login <a href="./index.php">here</a>.</span>
         </div>
       </div>
     </form>

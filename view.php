@@ -219,6 +219,6 @@
     print 'There are no contacts in your account';
   }
 } else {
-  header('location: ./login.php');
+  header('location: ./index.php');
 }
 ?>
